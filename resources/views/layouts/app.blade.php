@@ -9,72 +9,108 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="stylesheet" charset="utf-8" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" charset="utf-8" href="materialize-css/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="materialize-css/js/materialize.min.js"></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        .sidenav-custom {
+            top: 64px;
+            background-color: #394f67;
+        }
+    </style>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<body style="background-color: #ecf0f1;">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+<!-- Navbar -->
+<div class="wrapper">
+    <nav>
+        <div class="nav-wrapper" style="background-color: #111111;">
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                class="material-icons">power_settings_new</i></a></li>
+                <li>{{ Auth::user()->name }}</li>
+                <li style="margin-left: 1rem;"><img class="circle responsive-img" src="{{Auth::user()->profile_photo}}"
+                                                    style="width: 2rem; height: 2rem; vertical-align:middle; text-align:center;">
+                </li>
+            </ul>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                  style="display: none;">
+                @csrf
+            </form>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#"><i class="material-icons">notifications</i></a></li>
+                <li><a>Notificações</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
 
-                    </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                @endif
-                            </li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+<!-- SideBar -->
+<div>
+    <ul id="slide-out" class="sidenav sidenav-fixed sidenav-custom">
+        <a href="#"><i class="material-icons grey-text right">fast_rewind</i></a>
+        <br/>
+        <br/>
+            <li>
+                <div class="center">
+                    <a href="#!" class="grey-text">
+                        <row><i class="medium material-icons grey-text">format_list_bulleted</i></row>
+                        <p class="flow-text" style="margin-top: -20px">Ver Planos</p>
+                    </a>
                 </div>
-            </div>
-        </nav>
+            </li>
+            <li>
+                <div class="center">
+                    <a href="#!" class="grey-text">
+                        <row><i class="medium material-icons grey-text">assignment</i></row>
+                        <p class="flow-text" style="margin-top: -20px">Preencher Plano</p>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="center">
+                    <a href="#!" class="grey-text">
+                        <row><i class="medium material-icons grey-text">format_list_bulleted</i></row>
+                        <p class="flow-text" style="margin-top: -20px">Ver Relatórios</p>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="center">
+                    <a href="#!" class="grey-text">
+                        <row><i class="medium material-icons grey-text">assignment</i></row>
+                        <p class="flow-text" style="margin-top: -20px">Preencher Relatórios</p>
+                    </a>
+                </div>
+            </li>
+    </ul>
+</div>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+
+<!-- NavBar colapsada contendo as opções da NavBar e da SideBar-->
+<ul class="sidenav" id="mobile-demo">
+    <li style="text-align: center"><img class="circle responsive-img" src="{{Auth::user()->profile_photo}}"
+                                        style="width: 2rem; height: 2rem; vertical-align:middle; text-align:center;"> {{ Auth::user()->name }}
+    </li>
+    <li><a href="#">Ver Planos</a></li>
+    <li><a href="#">Preencher Plano</a></li>
+    <li><a href="#">Ver Relatórios</a></li>
+    <li><a href="#">Preencher Relatório</a></li>
+    <li><a href="#">Sair</a></li>
+</ul>
+
+<script>
+    $(document).ready(function () {
+        $('.sidenav').sidenav();
+    }); // Inicia as funcoes de colapsar a navbar e sidebar em telas menores.
+</script>
+
 </body>
 </html>

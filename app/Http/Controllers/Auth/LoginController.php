@@ -77,6 +77,7 @@ class LoginController extends Controller
         return User::create([
             'name'      => $user->name,
             'email'     => $user->email,
+            'profile_photo' => $user->avatar_original,
             'provider'  => strtoupper($provider),
             'provider_id'   => $user->id
         ]);
