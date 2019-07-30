@@ -16,10 +16,41 @@
     <script type="text/javascript" src="materialize-css/js/materialize.min.js"></script>
 
     <style type="text/css">
+        body, html{
+            width: 100%;
+        }
         .sidenav-custom {
             top: 64px;
             background-color: #394f67;
+            height: 100%;
+
         }
+        .collapsed-button-sidenav{
+            float: left;
+            background: #394f67;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            margin-top: 10px;
+            position:absolute;
+        }
+        i.collapsed-button-sidenav-icon{
+            margin-top: 3px;
+            padding-right: 2px;
+        }
+        .vertical-align-center{
+            margin: 0;
+            margin-left: 13%;
+            position: absolute;
+            top: 50%;
+            align-content: center;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+        .espacamento-li-sidenav{
+            margin-top: -20px;
+            padding-bottom: 20px;
+        }
+
     </style>
 
 </head>
@@ -54,15 +85,16 @@
 
 <!-- SideBar -->
 <div>
-    <ul id="slide-out" class="sidenav sidenav-fixed sidenav-custom">
-        <a href="#"><i class="material-icons grey-text right">fast_rewind</i></a>
+    <ul id="slide-out" class="sidenav sidenav-fixed sidenav-custom hide-on-med-and-down">
+        <a class="sidenav-close" href="#!" id="hide-sidenav"><i class="small material-icons grey-text right">fast_rewind</i></a>
         <br/>
         <br/>
+            <div class="vertical-align-center">
             <li>
                 <div class="center">
                     <a href="#!" class="grey-text">
                         <row><i class="medium material-icons grey-text">format_list_bulleted</i></row>
-                        <p class="flow-text" style="margin-top: -20px">Ver Planos</p>
+                        <p class="flow-text espacamento-li-sidenav">Ver Planos</p>
                     </a>
                 </div>
             </li>
@@ -70,7 +102,7 @@
                 <div class="center">
                     <a href="#!" class="grey-text">
                         <row><i class="medium material-icons grey-text">assignment</i></row>
-                        <p class="flow-text" style="margin-top: -20px">Preencher Plano</p>
+                        <p class="flow-text espacamento-li-sidenav">Preencher Plano</p>
                     </a>
                 </div>
             </li>
@@ -78,7 +110,7 @@
                 <div class="center">
                     <a href="#!" class="grey-text">
                         <row><i class="medium material-icons grey-text">format_list_bulleted</i></row>
-                        <p class="flow-text" style="margin-top: -20px">Ver Relatórios</p>
+                        <p class="flow-text espacamento-li-sidenav">Ver Relatórios</p>
                     </a>
                 </div>
             </li>
@@ -86,13 +118,16 @@
                 <div class="center">
                     <a href="#!" class="grey-text">
                         <row><i class="medium material-icons grey-text">assignment</i></row>
-                        <p class="flow-text" style="margin-top: -20px">Preencher Relatórios</p>
+                        <p class="flow-text espacamento-li-sidenav">Preencher Relatórios</p>
                     </a>
                 </div>
             </li>
+            </div>
     </ul>
+    <div class="collapsed-button-sidenav">
+        <a href="#" id="show-sidenav" data-target="slide-out" class="sidenav-trigger"><i class="material-icons grey-text collapsed-button-sidenav-icon">fast_forward</i></a>
+    </div>
 </div>
-
 
 <!-- NavBar colapsada contendo as opções da NavBar e da SideBar-->
 <ul class="sidenav" id="mobile-demo">
@@ -106,10 +141,31 @@
     <li><a href="#">Sair</a></li>
 </ul>
 
+
+<div id="content" class="center" style="width: 100%; height: 300px;  padding-left:300px;">
+    @yield('content')
+</div>
+
+
 <script>
     $(document).ready(function () {
         $('.sidenav').sidenav();
-    }); // Inicia as funcoes de colapsar a navbar e sidebar em telas menores.
+    }); // Inicia a funcao de colapsar a navbar e sidebar em telas menores.
+    $(document).ready(function(){
+        $('.sidenav-custom')
+            .sidenav()
+            .on('click tap', '#hide-sidenav', () => {
+                $('.sidenav').sidenav('close');
+                $('#content').css('padding-left', '0');
+            });
+    });// Inicia a funcao que oculta a sidenav quando o usuario clica no botao de id #hide-sidenav e altera a posição e tamanho da div content
+
+    $('#show-sidenav').on('click', function(){
+        $('#content').css('padding-left', '300px');
+    });// Seta a o padding do content quando a sidenav abre novamente
+
+
+
 </script>
 
 </body>
