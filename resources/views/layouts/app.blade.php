@@ -32,6 +32,7 @@
             border-bottom-right-radius: 10px;
             margin-top: 10px;
             position:absolute;
+            visibility: hidden;
         }
         i.collapsed-button-sidenav-icon{
             margin-top: 3px;
@@ -124,7 +125,7 @@
             </li>
             </div>
     </ul>
-    <div class="collapsed-button-sidenav">
+    <div class="collapsed-button-sidenav hide-on-med-and-down">
         <a href="#" id="show-sidenav" data-target="slide-out" class="sidenav-trigger"><i class="material-icons grey-text collapsed-button-sidenav-icon">fast_forward</i></a>
     </div>
 </div>
@@ -155,16 +156,18 @@
         $('.sidenav-custom')
             .sidenav()
             .on('click tap', '#hide-sidenav', () => {
-                $('.sidenav').sidenav('close');
+                //$('.sidenav').sidenav('close');
+                $('.sidenav-custom').css('visibility', 'hidden');
                 $('#content').css('padding-left', '0');
+                $('.collapsed-button-sidenav').css('visibility', 'visible');
             });
     });// Inicia a funcao que oculta a sidenav quando o usuario clica no botao de id #hide-sidenav e altera a posição e tamanho da div content
 
     $('#show-sidenav').on('click', function(){
+        $('.sidenav-custom').css('visibility', 'visible');
         $('#content').css('padding-left', '300px');
-    });// Seta a o padding do content quando a sidenav abre novamente
-
-
+        $('.collapsed-button-sidenav').css('visibility', 'hidden');
+    });// Seta o padding do content quando a sidenav abre novamente
 
 </script>
 
