@@ -63,7 +63,7 @@
         <div class="nav-wrapper" style="background-color: #111111;">
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a href="{{ route('logout') }}"
+                <li><a title="Sair" href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                 class="material-icons">power_settings_new</i></a></li>
                 <li>{{ Auth::user()->name }}</li>

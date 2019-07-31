@@ -72,6 +72,7 @@ class LoginController extends Controller
     public function findOrCreateUser($user, $provider){
         $authUser = User::where('provider_id', $user->id)->first();
         if($authUser){
+            $authUser->update(['profile_photo' => $user->avatar_original]);
             return $authUser;
         }
         return User::create([

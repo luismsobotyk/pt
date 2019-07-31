@@ -14,7 +14,16 @@ class CreatePermissionsTable extends Migration
     public function up()
     {
         Schema::create('permissions', function (Blueprint $table) {
-            $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->boolean('registerPlan')->default('0');
+            $table->boolean('seePlans')->default('0');
+            $table->boolean('seeUsersList')->default('0');
+            $table->boolean('setPermissions')->default('0');
+            $table->boolean('setSubmissionPeriod')->default('0');
+            $table->boolean('reopenPlans')->default('0');
+            $table->boolean('approveDocuments')->default('0');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->primary('user_id');
             $table->timestamps();
         });
     }
