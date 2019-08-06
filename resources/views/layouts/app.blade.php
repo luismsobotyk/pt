@@ -32,6 +32,7 @@
             border-bottom-right-radius: 10px;
             margin-top: 10px;
             position:absolute;
+            display: none;
         }
         i.collapsed-button-sidenav-icon{
             margin-top: 3px;
@@ -62,7 +63,7 @@
         <div class="nav-wrapper" style="background-color: #111111;">
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a href="{{ route('logout') }}"
+                <li><a title="Sair" href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                 class="material-icons">power_settings_new</i></a></li>
                 <li>{{ Auth::user()->name }}</li>
@@ -124,7 +125,7 @@
             </li>
             </div>
     </ul>
-    <div class="collapsed-button-sidenav">
+    <div id='collapsed-button-sidenav-id' class="collapsed-button-sidenav hide-on-med-and-down">
         <a href="#" id="show-sidenav" data-target="slide-out" class="sidenav-trigger"><i class="material-icons grey-text collapsed-button-sidenav-icon">fast_forward</i></a>
     </div>
 </div>
@@ -155,16 +156,26 @@
         $('.sidenav-custom')
             .sidenav()
             .on('click tap', '#hide-sidenav', () => {
-                $('.sidenav').sidenav('close');
+                //$('.sidenav').sidenav('close');
+                $('.sidenav-custom').hide();
                 $('#content').css('padding-left', '0');
+                $('.collapsed-button-sidenav').show();
             });
     });// Inicia a funcao que oculta a sidenav quando o usuario clica no botao de id #hide-sidenav e altera a posição e tamanho da div content
 
     $('#show-sidenav').on('click', function(){
+        $('.sidenav-custom').show();
         $('#content').css('padding-left', '300px');
-    });// Seta a o padding do content quando a sidenav abre novamente
+        $('.collapsed-button-sidenav').hide();
+    });// Seta o padding do content quando a sidenav abre novamente
 
-
+    $(window).resize(function() {
+        if($('#slide-out').is(':hidden')){
+            $('#content').css('padding-left', '0');
+        }else{
+            $('#content').css('padding-left', '300px');
+        }
+    });
 
 </script>
 
