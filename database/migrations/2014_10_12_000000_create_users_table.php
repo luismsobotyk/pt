@@ -23,6 +23,22 @@ class CreateUsersTable extends Migration
             $table->string('provider');
             $table->string('provider_id');
             $table->rememberToken();
+
+            // identificacao do usuario
+            $table->String('knowledge_area')->nullable();
+            $table->String('teaching', 4)->nullable();
+            $table->String('regime', 2)->nullable();
+
+            //permissoes do usuario
+            $table->boolean('registerPlan')->default('0');
+            $table->boolean('seePlans')->default('0');
+            $table->boolean('seeUsersList')->default('0');
+            $table->boolean('setPermissions')->default('0');
+            $table->boolean('setSubmissionPeriod')->default('0');
+            $table->boolean('reopenPlans')->default('0');
+            $table->boolean('approveDocuments')->default('0');
+
+            //timestamps
             $table->timestamps();
         });
     }
