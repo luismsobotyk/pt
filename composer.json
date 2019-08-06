@@ -52,8 +52,8 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "php artisan vendor:publish --tag=materializecss --force",
-        ],
+            "php artisan vendor:publish --tag=materializecss --force"
+        ]
     },
     "config": {
         "preferred-install": "dist",
