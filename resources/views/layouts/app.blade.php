@@ -58,7 +58,7 @@
 <body style="background-color: #ecf0f1;">
 
 <!-- Navbar -->
-<div class="wrapper">
+<div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper" style="background-color: #111111;">
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -68,7 +68,7 @@
                                 class="material-icons">power_settings_new</i></a></li>
                 <li>{{ Auth::user()->name }}</li>
                 <li style="margin-left: 1rem;"><img class="circle responsive-img" src="{{Auth::user()->profile_photo}}"
-                                                    style="width: 2rem; height: 2rem; vertical-align:middle; text-align:center;">
+                                                    style="width: 2rem; height: 2rem; vertical-align:middle; text-align:center; margin-bottom: 2px;">
                 </li>
             </ul>
             <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -93,7 +93,7 @@
             <div class="vertical-align-center">
             <li>
                 <div class="center">
-                    <a href="#!" class="grey-text">
+                    <a href="{{ route('meusPlanos') }}" class="grey-text">
                         <row><i class="medium material-icons grey-text">format_list_bulleted</i></row>
                         <p class="flow-text espacamento-li-sidenav">Ver Planos</p>
                     </a>
@@ -135,11 +135,11 @@
     <li style="text-align: center"><img class="circle responsive-img" src="{{Auth::user()->profile_photo}}"
                                         style="width: 2rem; height: 2rem; vertical-align:middle; text-align:center;"> {{ Auth::user()->name }}
     </li>
-    <li><a href="#">Ver Planos</a></li>
+    <li><a href="{{ route('meusPlanos') }}">Ver Planos</a></li>
     <li><a href="#">Preencher Plano</a></li>
     <li><a href="#">Ver Relatórios</a></li>
     <li><a href="#">Preencher Relatório</a></li>
-    <li><a href="#">Sair</a></li>
+    <li><a href="{{ route('logout') }}">Sair</a></li>
 </ul>
 
 
@@ -170,6 +170,14 @@
     });// Seta o padding do content quando a sidenav abre novamente
 
     $(window).resize(function() {
+        if($('#slide-out').is(':hidden')){
+            $('#content').css('padding-left', '0');
+        }else{
+            $('#content').css('padding-left', '300px');
+        }
+    });
+
+    $(window).ready(function(){
         if($('#slide-out').is(':hidden')){
             $('#content').css('padding-left', '0');
         }else{
