@@ -1,12 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class WorkPlans extends Model
 {
-    //
     WorkPlans::all();
     // Retorna todos os registros da tabela WorkPlans (Seria o equivalente a
     // SELECT * FROM WorkPlans, para o MySQL)
@@ -23,5 +22,5 @@ class WorkPlans extends Model
     ->take(10)
     ->get();
     // Executa uma query com parâmetros de restrição (WHERE e LIMIT)
-    // organizando pelas colunas especificadas
+    // organizando pelas colunas especificada
 }
