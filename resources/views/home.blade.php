@@ -20,7 +20,7 @@
                 <h4>{{ Auth::user()->name }}</h4>
             </div>
 
-            <div class="col xl3 l6 m6 s6">
+            <div class="col xl3 l6 m6 s12">
                 <div class="card">
                     <div class="card-content">
                         <p>INFORMAÇÃO:</p>
@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            <div class="col xl3 l6 m6 s6">
+            <div class="col xl3 l6 m6 s12">
                 <div class="card">
                     <div class="card-content">
                         <p>INFORMAÇÃO:</p>
@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <div class="col xl3 l6 m6 s6">
+            <div class="col xl3 l6 m6 s12">
                 <div class="card">
                     <div class="card-content">
                         <p>INFORMAÇÃO:</p>
@@ -65,7 +65,7 @@
                 </div>
             </div>
 
-            <div class="col xl3 l6 m6 s6">
+            <div class="col xl3 l6 m6 s12">
                 <div class="card">
                     <div class="card-content">
                         <p>INFORMAÇÃO:</p>

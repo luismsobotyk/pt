@@ -30,7 +30,7 @@
             background: #394f67;
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
-            margin-top: 10px;
+            margin-top: 60px;
             position:absolute;
             display: none;
         }
@@ -101,7 +101,7 @@
             </li>
             <li>
                 <div class="center">
-                    <a href="#!" class="grey-text">
+                    <a href="{{ route('preencherPlano') }}" class="grey-text">
                         <row><i class="medium material-icons grey-text">assignment</i></row>
                         <p class="flow-text espacamento-li-sidenav">Preencher Plano</p>
                     </a>
@@ -135,8 +135,9 @@
     <li style="text-align: center"><img class="circle responsive-img" src="{{Auth::user()->profile_photo}}"
                                         style="width: 2rem; height: 2rem; vertical-align:middle; text-align:center;"> {{ Auth::user()->name }}
     </li>
+    <li><a href="{{ route('home') }}">Página Inicial</a></li>
     <li><a href="{{ route('meusPlanos') }}">Ver Planos</a></li>
-    <li><a href="#">Preencher Plano</a></li>
+    <li><a href="{{ route('preencherPlano') }}">Preencher Plano</a></li>
     <li><a href="#">Ver Relatórios</a></li>
     <li><a href="#">Preencher Relatório</a></li>
     <li><a href="{{ route('logout') }}">Sair</a></li>
