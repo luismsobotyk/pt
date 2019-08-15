@@ -64,8 +64,8 @@
     <footer class="page-footer grey lighten-3 grey-text right-align">
         <div class="col s6">
             <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                    form="formIdentificacao" formaction="/preencherPlano/2">Próxima
-                <i class="material-icons right">send</i>
+                    form="formIdentificacao" formaction="{{ route('preencherPlano', 2) }}">Próxima
+                <i class="material-icons right">arrow_forward</i>
             </button>
         </div>
     </footer>

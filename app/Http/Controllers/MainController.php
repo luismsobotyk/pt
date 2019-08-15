@@ -16,7 +16,7 @@ class MainController extends Controller
         }else if($numAba == 1){
             return view('abasPreenchimentoPlano.identificacao');
         }else if($numAba == 2){
-            return "oi";
+            return view('abasPreenchimentoPlano.aulas');
         }else{
             return 'it works';
         }
