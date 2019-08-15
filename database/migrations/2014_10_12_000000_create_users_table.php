@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             // identificacao do usuario
             $table->String('knowledge_area')->nullable();
             $table->String('teaching', 4)->nullable();
-            $table->String('regime', 2)->nullable();
+            $table->String('regime', 9)->nullable();
 
             //permissoes do usuario
             $table->boolean('registerPlan')->default('0');

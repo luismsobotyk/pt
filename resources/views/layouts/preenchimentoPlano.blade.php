@@ -37,9 +37,10 @@
         </div>
     </div>
 
-    <div class="container" style="border-top: 1px solid #bdbdbd; margin-top: 1rem; padding-top: 1rem;">
+    <div class="container" style="border-top: 1px solid #bdbdbd; margin-top: 1rem; padding-top: 1rem; padding-bottom: 1rem;">
         @yield('abaPreenchimento')
     </div>
+
 
 
 @endsection

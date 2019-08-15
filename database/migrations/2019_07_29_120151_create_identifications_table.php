@@ -18,7 +18,7 @@ class CreateIdentificationsTable extends Migration
             $table->unsignedInteger('plan_id');
             $table->String('knowledge_area');
             $table->String('teaching', 4);
-            $table->String('regime', 2);
+            $table->String('regime', 9);
             $table->foreign('plan_id')->references('id')->on('work_plans');
             $table->timestamps();
         });

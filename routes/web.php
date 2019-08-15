@@ -23,4 +23,4 @@ Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/meusPlanos', 'MainController@listarPlanos')->name('meusPlanos');
-Route::get('/preencherPlano', 'MainController@preencherPlano')->name('preencherPlano');
+Route::any('/preencherPlano/{numAba?}', 'MainController@preencherPlano')->name('preencherPlano');
