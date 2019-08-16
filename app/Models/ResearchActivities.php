@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class WorkPlans extends Model
+class ResearchActivities extends Model
 {
-    
+    //
 }
