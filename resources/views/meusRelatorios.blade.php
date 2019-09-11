@@ -15,9 +15,8 @@
     </style>
 
     <div class="container" style="margin-top: 7rem;">
-
         <div class="row">
-            <h5>Meus Planos: </h5>
+            <h5>Meus Relatórios: </h5>
         </div>
 
         <div class="row">
@@ -154,20 +153,20 @@
     </div>
 
 
-        <!-- QUANDO NENHUM PLANO FOR ENCONTRADO -->
+    <!-- QUANDO NENHUM PLANO FOR ENCONTRADO -->
 
-        <!--div class="container" style="margin-top: 10rem;">
-            <div class="col s12">
-                <div class="card">
-                    <div class="card-content">
-                        <p><i>Nenhum plano encontrado.</i></p>
-                    </div>
+    <!--div class="container" style="margin-top: 10rem;">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <p><i>Nenhum plano encontrado.</i></p>
                 </div>
             </div>
-            <div class="right">
-                <i class="material-icons" style="display: inline-flex; vertical-align: top; margin-top: -1px;">help_outline</i>
-                Acha que tem algo errado? Clique <a href="#!">aqui</a>.
-            </div>
-        </div-->
+        </div>
+        <div class="right">
+            <i class="material-icons" style="display: inline-flex; vertical-align: top; margin-top: -1px;">help_outline</i>
+            Acha que tem algo errado? Clique <a href="#!">aqui</a>.
+        </div>
+    </div-->
 
 @endsection

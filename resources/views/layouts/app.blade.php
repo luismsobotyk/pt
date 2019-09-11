@@ -110,7 +110,7 @@
             </li>
             <li>
                 <div class="center">
-                    <a href="#!" class="grey-text">
+                    <a href="{{ route('meusRelatorios') }}" class="grey-text">
                         <row><i class="medium material-icons grey-text">format_list_bulleted</i></row>
                         <p class="flow-text espacamento-li-sidenav">Ver Relatórios</p>
                     </a>
@@ -118,9 +118,9 @@
             </li>
             <li>
                 <div class="center">
-                    <a href="#!" class="grey-text">
+                    <a href="{{ route('preencherRelatorio') }}" class="grey-text">
                         <row><i class="medium material-icons grey-text">assignment</i></row>
-                        <p class="flow-text espacamento-li-sidenav">Preencher Relatórios</p>
+                        <p class="flow-text espacamento-li-sidenav">Preencher Relatório</p>
                     </a>
                 </div>
             </li>
@@ -139,8 +139,8 @@
     <li><a href="{{ route('home') }}">Página Inicial</a></li>
     <li><a href="{{ route('meusPlanos') }}">Ver Planos</a></li>
     <li><a href="{{ route('preencherPlano') }}">Preencher Plano</a></li>
-    <li><a href="#">Ver Relatórios</a></li>
-    <li><a href="#">Preencher Relatório</a></li>
+    <li><a href="{{ route('meusRelatorios') }}">Ver Relatórios</a></li>
+    <li><a href="{{ route('preencherRelatorio') }}">Preencher Relatório</a></li>
     <li><a href="{{ route('logout') }}">Sair</a></li>
 </ul>
 
