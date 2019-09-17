@@ -6,6 +6,19 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
+
+    public function myProfile(){
+        return view('meuPerfil');
+    }
+
+    public function editMyProfile(){
+        return view('editarMeuPerfil');
+    }
+
+    public function saveEditedProfileInfos(){
+        return redirect()->route('editarMinhasInfos')->with('edited', 'false');
+    }
+
     public function listarPlanos(){
         return view('meusPlanos');
     }

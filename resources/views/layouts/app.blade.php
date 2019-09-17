@@ -67,9 +67,9 @@
                 <li><a title="Sair" href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                 class="material-icons">power_settings_new</i></a></li>
-                <li>{{ Auth::user()->name }}</li>
-                <li style="margin-left: 1rem;"><img class="circle responsive-img" src="{{Auth::user()->profile_photo}}"
-                                                    style="width: 2rem; height: 2rem; vertical-align:middle; text-align:center; margin-bottom: 2px;">
+                <li><a href="{{ route('myProfile') }}">{{ Auth::user()->name }}
+                <img class="circle responsive-img" src="{{Auth::user()->profile_photo}}"
+                     style="margin-left: 1rem; width: 2rem; height: 2rem; vertical-align:middle; text-align:center; margin-bottom: 2px;"></a>
                 </li>
             </ul>
             <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -133,8 +133,8 @@
 
 <!-- NavBar colapsada contendo as opções da NavBar e da SideBar-->
 <ul class="sidenav" id="mobile-demo">
-    <li style="text-align: center"><img class="circle responsive-img" src="{{Auth::user()->profile_photo}}"
-                                        style="width: 2rem; height: 2rem; vertical-align:middle; text-align:center;"> {{ Auth::user()->name }}
+    <li style="text-align: center"><a href="{{ route('myProfile') }}"><img class="circle responsive-img" src="{{Auth::user()->profile_photo}}"
+                                                                           style="width: 2rem; height: 2rem; vertical-align:middle; text-align:center;"> {{ Auth::user()->name }}</a>
     </li>
     <li><a href="{{ route('home') }}">Página Inicial</a></li>
     <li><a href="{{ route('meusPlanos') }}">Ver Planos</a></li>
