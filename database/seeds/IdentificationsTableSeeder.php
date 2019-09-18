@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use App\Models\Identifications;
+use App\Models\Identification;
 
 
 class IdentificationsTableSeeder extends Seeder
@@ -14,7 +14,7 @@ class IdentificationsTableSeeder extends Seeder
      */
     public function run()
     {
-        Identifications::create([
+        Identification::create([
             'plan_id' => '1',
             'knowledge_area' => 'Informática Básica', 
             'teaching' => 'ES',

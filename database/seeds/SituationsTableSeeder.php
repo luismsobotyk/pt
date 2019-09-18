@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
-use App\Models\Situations;
+use App\Models\Situation;
 
 class  SituationsTableSeeder  extends Seeder
 {
@@ -13,8 +13,8 @@ class  SituationsTableSeeder  extends Seeder
      */
     public function run()
     {
-        Situations::create(['type' => 'aberto']);
-        Situations::create(['type' => 'fechado']);
-        Situations::create(['type' => 'reaberto']);       
+        Situation::create(['type' => 'aberto']);
+        Situation::create(['type' => 'fechado']);
+        Situation::create(['type' => 'reaberto']);       
     }
 }
