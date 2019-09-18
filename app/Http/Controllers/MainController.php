@@ -7,7 +7,17 @@ use App\Models\WorkPlan;
 use Nexmo\Message\Shortcode\Alert;
 
 class MainController extends Controller
-{
+{    
+    public function myProfile(){
+        return view('meuPerfil');
+    }
+    public function editMyProfile(){
+        return view('editarMeuPerfil');
+    }
+    public function saveEditedProfileInfos(){
+        return redirect()->route('editarMinhasInfos')->with('edited', 'false');
+    }
+
     public function listarPlanos()
     {
         return view('meusPlanos');

@@ -22,6 +22,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
+Route::get('myProfile', 'MainController@myProfile')->name('myProfile');
+Route::get('myProfile/edit', 'MainController@editMyProfile')->name('editarMinhasInfos');
+Route::post('myProfile/edit/save', 'MainController@saveEditedProfileInfos')->name('salvarMinhasInfosEditadas');
+
 Route::get('/meusPlanos', 'MainController@listarPlanos')->name('meusPlanos');
 Route::get('/meusRelatorios', 'MainController@listarRelatorios')->name('meusRelatorios');
 
