@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
@@ -25,6 +25,7 @@ Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallb
 Route::get('myProfile', 'MainController@myProfile')->name('myProfile');
 Route::get('myProfile/edit', 'MainController@editMyProfile')->name('editarMinhasInfos');
 Route::post('myProfile/edit/save', 'MainController@saveEditedProfileInfos')->name('salvarMinhasInfosEditadas');
+Route::get('notifications', 'MainController@verNotificacoes')->name('notificacoes');
 
 Route::get('/meusPlanos', 'MainController@listarPlanos')->name('meusPlanos');
 Route::get('/meusRelatorios', 'MainController@listarRelatorios')->name('meusRelatorios');

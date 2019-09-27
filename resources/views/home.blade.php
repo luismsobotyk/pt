@@ -9,7 +9,7 @@
         }
     </style>
 
-    <div class="container" style="margin-top: 5rem;">
+    <div class="container" style="margin-top: 6rem;">
         <div class="row">
 
             <div class="col x6 l6 m12 s12">

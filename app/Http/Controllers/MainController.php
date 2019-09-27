@@ -7,7 +7,12 @@ use App\Models\WorkPlan;
 use Nexmo\Message\Shortcode\Alert;
 
 class MainController extends Controller
-{    
+{
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function myProfile(){
         return view('meuPerfil');
     }
@@ -15,7 +20,12 @@ class MainController extends Controller
         return view('editarMeuPerfil');
     }
     public function saveEditedProfileInfos(){
-        return redirect()->route('editarMinhasInfos')->with('edited', 'false');
+        //return redirect()->route('editarMinhasInfos')->with('error', 'Houve um problema ao atualizar seus dados.'); // se der erro
+        return redirect()->route('editarMinhasInfos')->with('success', 'Seus dados foram atualizados.'); // se der certo
+    }
+
+    public function verNotificacoes(){
+        return view('notificacoes');
     }
 
     public function listarPlanos()
@@ -82,9 +92,8 @@ class MainController extends Controller
                 ->with('ExtensionActivities')
                 ->with('AdministrativeActivities')
                 ->get();
-            dd($registros);
+            //dd($registros);
             if (!empty($registros)) {
-
                 return view('abasPreenchimentoPlano.identificacao', compact('registros'));
             } else {
                 return redirect()

@@ -4,15 +4,7 @@
 
     <div class="container" style="margin-top: 1rem;">
 
-        @if(Session::get('edited') == 'true')
-            <script>
-                M.toast({html: 'Seus dados foram atualizados.', displayLength: '5000', classes: 'teal lighten-1'})
-            </script>
-        @elseif(Session::get('edited') == 'false')
-            <script>
-                M.toast({html: 'Houve um problema ao atualizar seus dados.', displayLength: '5000', classes: 'red lighten-1'})
-            </script>
-        @endif
+        @include('includes.alerts')
 
         <form action="{{ route('salvarMinhasInfosEditadas') }}" method="post">
 

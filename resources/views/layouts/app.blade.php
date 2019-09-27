@@ -18,6 +18,7 @@
 
     <style type="text/css">
         body, html{
+            background-color: #ecf0f1;
             width: 100%;
         }
         .sidenav-custom {
@@ -52,16 +53,34 @@
             margin-top: -20px;
             padding-bottom: 20px;
         }
-
+        .dropdown-content {
+            min-width: 600px;
+            will-change: width;
+        }
+        .nav-wrapper{
+            background-color: #111111;
+        }
+        .dropdown-content{
+            background-color: #111111;
+        }
+        .dropdown-content li a{
+            color: #e0e0e0;
+        }
+        .dropdown-content li a:hover{
+            background-color: #424242;
+        }
+        .dropdown-content li a center{
+            text-align: center !important;
+        }
     </style>
 
 </head>
-<body style="background-color: #ecf0f1;">
+<body>
 
 <!-- Navbar -->
 <div class="navbar-fixed">
     <nav>
-        <div class="nav-wrapper" style="background-color: #111111;">
+        <div class="nav-wrapper">
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li><a title="Sair" href="{{ route('logout') }}"
@@ -77,8 +96,22 @@
                 @csrf
             </form>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#"><i class="material-icons">notifications</i></a></li>
-                <li><a>Notificações</a></li>
+
+                <!-- Se tiver notificação não lida >
+                li><a class="dropdown-trigger" data-target="notification" href="#notifications">Notificações<i class="material-icons left">notifications_active</i></a></li>
+
+                <!-- Se não tiver notificações não lidas -->
+
+                <li><a class="dropdown-trigger" data-target="notifications" href="#notifications">Notificações<i class="material-icons left">notifications</i></a></li>
+
+
+                <ul id='notifications' class='dropdown-content'>
+                    <li><a href="#!">Seu plano 2019/1 foi rejeitado por Fulano de Tal, revise-o.<span class="new badge right amber darken-3"></span></a></li>
+                    <li><a href="#!">Seu plano 2018/2 foi aprovado.</a></li>
+                    <li><a href="#!">Seu plano 2018/1 foi aprovado.</a></li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a href="{{ route('notificacoes') }}" class="center">Ver Tudo<i class="material-icons left">notifications</i></a></li>
+                </ul>
             </ul>
         </div>
     </nav>
@@ -186,7 +219,10 @@
             $('#content').css('padding-left', '300px');
         }
     });
-
+    $('.dropdown-trigger').dropdown({
+        constrainWidth: true,
+        coverTrigger: false,
+    });
 </script>
 
 </body>

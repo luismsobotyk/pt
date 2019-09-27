@@ -15,7 +15,7 @@ class WorkPlanTableSeeder extends Seeder
     
     {
         WorkPlan::create([
-            'user_id' => '2',
+            'user_id' => '1',
             'situation_id' => '1', 
             'opening_date' => '2019-08-21',
             'closing_date' => '2019-12-12',
@@ -23,7 +23,7 @@ class WorkPlanTableSeeder extends Seeder
             'approval_date' => '2019-08-21',
         ]);
         WorkPlan::create([
-            'user_id' => '2',
+            'user_id' => '1',
             'situation_id' => '2', 
             'opening_date' => '2019-08-21',
             'closing_date' => '2019-12-12',
@@ -32,7 +32,7 @@ class WorkPlanTableSeeder extends Seeder
         ]);
 
         WorkPlan::create([
-            'user_id' => '2',
+            'user_id' => '1',
             'situation_id' => '3', 
             'opening_date' => '2019-08-21',
             'closing_date' => '2019-12-12',
@@ -41,7 +41,7 @@ class WorkPlanTableSeeder extends Seeder
         ]);
 
         WorkPlan::create([
-            'user_id' => '1',
+            'user_id' => '2',
             'situation_id' => '1', 
             'opening_date' => '2019-08-21',
             'closing_date' => '2019-12-12',

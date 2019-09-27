@@ -1,20 +1,22 @@
 @if ($errors->any())
-    <div class="card-panel teal yellow accent-4">
+    <script>
+        var htmlText= "";
         @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
+            htmlText= htmlText+"<p>{{ $error }}</p>";
         @endforeach
-    </div>
+        M.toast({html: htmlText, displayLength: '10000', classes: 'amber lighten-1'});
+    </script>
 @endif
 
 @if (session('success'))
-    <div class="card-panel teal green darken-2">
-        {{ session('success') }}
-    </div>
+    <script>
+        M.toast({html: '{{ session('success') }}', displayLength: '5000', classes: 'teal lighten-1'});
+    </script>
 @endif
 
 
 @if (session('error'))
-    <div class="card-panel teal deep-orange">
-        {{ session('error') }}
-    </div>
+    <script>
+        M.toast({html: '{{ session('error') }}', displayLength: '5000', classes: 'red lighten-1'});
+    </script>
 @endif
