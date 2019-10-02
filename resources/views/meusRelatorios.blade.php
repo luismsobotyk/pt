@@ -21,7 +21,7 @@
 
         <div class="row">
             <div class="col xl4 l4 m6 s12">
-                <a href="#!">
+                <a href="{{ route('verRelatorio', 1) }}">
                     <div class="card black-text">
                         <div class="card-content">
                             <p>2019/2</p>
@@ -36,7 +36,7 @@
             </div>
 
             <div class="col xl4 l4 m6 s12">
-                <a href="#!">
+                <a href="{{ route('verRelatorio', 1) }}">
                     <div class="card black-text">
                         <div class="card-content">
                             <p>2019/1</p>
@@ -51,7 +51,7 @@
             </div>
 
             <div class="col xl4 l4 m6 s12">
-                <a href="#!">
+                <a href="{{ route('verRelatorio', 1) }}">
                     <div class="card black-text">
                         <div class="card-content">
                             <p>2018/2</p>
@@ -65,7 +65,7 @@
             </div>
 
             <div class="col xl4 l4 m6 s12">
-                <a href="#!">
+                <a href="{{ route('verRelatorio', 1) }}">
                     <div class="card black-text">
                         <div class="card-content">
                             <p>2018/1</p>
@@ -79,7 +79,7 @@
             </div>
 
             <div class="col xl4 l4 m6 s12">
-                <a href="#!">
+                <a href="{{ route('verRelatorio', 1) }}">
                     <div class="card black-text">
                         <div class="card-content">
                             <p>2017/2</p>
@@ -93,7 +93,7 @@
             </div>
 
             <div class="col xl4 l4 m6 s12">
-                <a href="#!">
+                <a href="{{ route('verRelatorio', 1) }}">
                     <div class="card black-text">
                         <div class="card-content">
                             <p>2017/1</p>
@@ -107,7 +107,7 @@
             </div>
 
             <div class="col xl4 l4 m6 s12">
-                <a href="#!">
+                <a href="{{ route('verRelatorio', 1) }}">
                     <div class="card black-text">
                         <div class="card-content">
                             <p>2016/2</p>
@@ -121,7 +121,7 @@
             </div>
 
             <div class="col xl4 l4 m6 s12">
-                <a href="#!">
+                <a href="{{ route('verRelatorio', 1) }}">
                     <div class="card black-text">
                         <div class="card-content">
                             <p>2016/1</p>
@@ -135,7 +135,7 @@
             </div>
 
             <div class="col xl4 l4 m6 s12">
-                <a href="#!">
+                <a href="{{ route('verRelatorio', 1) }}">
                     <div class="card black-text">
                         <div class="card-content">
                             <p>2015/2</p>

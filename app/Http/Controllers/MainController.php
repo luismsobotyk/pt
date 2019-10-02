@@ -28,13 +28,19 @@ class MainController extends Controller
         return view('notificacoes');
     }
 
-    public function listarPlanos()
-    {
+    public function listarPlanos(){
         return view('meusPlanos');
     }
 
-    public function listarRelatorios()
-    {
+    public function verPlano(){
+        return view('verPlano');
+    }
+
+    public function verRelatorio(){
+        return view ('verRelatorio');
+    }
+
+    public function listarRelatorios(){
         return view('meusRelatorios');
     }
 

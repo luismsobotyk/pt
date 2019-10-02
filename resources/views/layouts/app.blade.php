@@ -72,6 +72,9 @@
         .dropdown-content li a center{
             text-align: center !important;
         }
+        table.highlight>tbody>tr:hover{
+            background-color: #e0e0e0;
+        }
     </style>
 
 </head>
@@ -87,14 +90,32 @@
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                 class="material-icons">power_settings_new</i></a></li>
                 <li><a href="{{ route('myProfile') }}">{{ Auth::user()->name }}
-                <img class="circle responsive-img" src="{{Auth::user()->profile_photo}}"
-                     style="margin-left: 1rem; width: 2rem; height: 2rem; vertical-align:middle; text-align:center; margin-bottom: 2px;"></a>
+                        <img class="circle responsive-img" src="{{Auth::user()->profile_photo}}"
+                             style="margin-left: 1rem; width: 2rem; height: 2rem; vertical-align:middle; text-align:center; margin-bottom: 2px;"></a>
                 </li>
             </ul>
+
+            {{-- @if(session('admin')) --}}
+
+            <ul id="nav-mobile" class="brand-logo center hide-on-med-and-down">
+                <li>
+                    <a href="#">Listar Planos</a>
+                </li>
+                <li>
+                    <a href="#">Listar Relatórios</a>
+                </li>
+                <li>
+                    <a href="{{ route('listarUsuarios') }}">Ver Usuários</a>
+                </li>
+            </ul>
+
+            {{-- @endif --}}
+
             <form id="logout-form" action="{{ route('logout') }}" method="POST"
                   style="display: none;">
                 @csrf
             </form>
+
             <ul id="nav-mobile" class="right hide-on-med-and-down">
 
                 <!-- Se tiver notificação não lida >
@@ -124,12 +145,12 @@
         <a class="sidenav-close" href="#!" id="hide-sidenav"><i class="small material-icons grey-text right">fast_rewind</i></a>
         <br/>
         <br/>
-            <div class="vertical-align-center">
+        <div class="vertical-align-center">
             <li>
                 <div class="center">
                     <a href="{{ route('meusPlanos') }}" class="grey-text">
                         <row><i class="medium material-icons grey-text">format_list_bulleted</i></row>
-                        <p class="flow-text espacamento-li-sidenav">Ver Planos</p>
+                        <p class="flow-text espacamento-li-sidenav">Meus Planos</p>
                     </a>
                 </div>
             </li>
@@ -145,7 +166,7 @@
                 <div class="center">
                     <a href="{{ route('meusRelatorios') }}" class="grey-text">
                         <row><i class="medium material-icons grey-text">format_list_bulleted</i></row>
-                        <p class="flow-text espacamento-li-sidenav">Ver Relatórios</p>
+                        <p class="flow-text espacamento-li-sidenav">Meus Relatórios</p>
                     </a>
                 </div>
             </li>
@@ -157,7 +178,7 @@
                     </a>
                 </div>
             </li>
-            </div>
+        </div>
     </ul>
     <div id='collapsed-button-sidenav-id' class="collapsed-button-sidenav hide-on-med-and-down">
         <a href="#" id="show-sidenav" data-target="slide-out" class="sidenav-trigger"><i class="material-icons grey-text collapsed-button-sidenav-icon">fast_forward</i></a>
@@ -170,10 +191,20 @@
                                                                            style="width: 2rem; height: 2rem; vertical-align:middle; text-align:center;"> {{ Auth::user()->name }}</a>
     </li>
     <li><a href="{{ route('home') }}">Página Inicial</a></li>
-    <li><a href="{{ route('meusPlanos') }}">Ver Planos</a></li>
+    <div class="divider"></div>
+    {{-- @if(session('admin')) --}}
+    <li><a href="#">Listar Planos</a></li>
+    <li><a href="#">Listar Relatórios</a></li>
+    <li><a href="{{ route('listarUsuarios') }}">Ver Usuários</a></li>
+    <div class="divider"></div>
+    {{-- @endif --}}
+
+
+    <li><a href="{{ route('meusPlanos') }}">Meus Planos</a></li>
     <li><a href="{{ route('preencherPlano') }}">Preencher Plano</a></li>
-    <li><a href="{{ route('meusRelatorios') }}">Ver Relatórios</a></li>
+    <li><a href="{{ route('meusRelatorios') }}">Meus Relatórios</a></li>
     <li><a href="{{ route('preencherRelatorio') }}">Preencher Relatório</a></li>
+    <div class="divider"></div>
     <li><a href="{{ route('logout') }}">Sair</a></li>
 </ul>
 
