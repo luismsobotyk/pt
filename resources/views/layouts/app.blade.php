@@ -75,6 +75,18 @@
         table.highlight>tbody>tr:hover{
             background-color: #e0e0e0;
         }
+        table.striped > tbody > tr:nth-child(odd) {
+            background-color: #e0e0e0;
+        }
+        .padding-1-left{
+            padding-left: 1rem;
+        }
+        .margin-2-top{
+            margin-top: 2rem;
+        }
+        .margin-6-top{
+            margin-top: 6rem;
+        }
     </style>
 
 </head>
@@ -99,10 +111,13 @@
 
             <ul id="nav-mobile" class="brand-logo center hide-on-med-and-down">
                 <li>
-                    <a href="#">Listar Planos</a>
+                    <a href="{{ route('listarPeriodos') }}">Períodos</a>
                 </li>
                 <li>
-                    <a href="#">Listar Relatórios</a>
+                    <a href="{{ route('listarPlanos') }}">Listar Planos</a>
+                </li>
+                <li>
+                    <a href="{{ route('listarRelatorios') }}">Listar Relatórios</a>
                 </li>
                 <li>
                     <a href="{{ route('listarUsuarios') }}">Ver Usuários</a>
@@ -193,8 +208,9 @@
     <li><a href="{{ route('home') }}">Página Inicial</a></li>
     <div class="divider"></div>
     {{-- @if(session('admin')) --}}
-    <li><a href="#">Listar Planos</a></li>
-    <li><a href="#">Listar Relatórios</a></li>
+    <li><a href="{{ route('listarPeriodos') }}">Períodos</a></li>
+    <li><a href="{{ route('listarPlanos') }}">Listar Planos</a></li>
+    <li><a href="{{ route('listarRelatorios') }}">Listar Relatórios</a></li>
     <li><a href="{{ route('listarUsuarios') }}">Ver Usuários</a></li>
     <div class="divider"></div>
     {{-- @endif --}}
@@ -210,6 +226,7 @@
 
 
 <div id="content" class="center" style="width: 100%; height: 300px;  padding-left:300px;">
+    @include('includes.alerts')
     @yield('content')
 </div>
 

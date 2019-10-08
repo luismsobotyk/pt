@@ -47,3 +47,16 @@ Route::any('/preencherRelatorio/{numAba?}', 'MainController@preencherRelatorio')
 //--  Rotas para admin  --//
 
 Route::get('/listarUsuarios', 'AdminController@listarUsuarios')->name('listarUsuarios');
+Route::get('/usuario/{id}', 'AdminController@verUsuario')->name('verUsuario');
+Route::get('/usuario/{id}/editarPermissoes', 'AdminController@viewPermissoes')->name('editarPermissao');
+Route::post('/usuario/{id}/editarPermissoes/salvar', 'AdminController@salvarPermissoes')->name('salvarPermissoes');
+
+Route::get('periodos/novo', 'AdminController@novoPeriodo')->name('novoPeriodo');
+Route::post('periodos/novo/salvar', 'AdminController@salvarNovoPeriodo')->name('salvarNovoPeriodo');
+Route::get('/listarPeriodos', 'AdminController@listarPeriodos')->name('listarPeriodos');
+Route::get('/periodos/{id}/editarPeriodo', 'AdminController@editarPeriodo')->name('editarPeriodo');
+Route::post('/periodos/{id}/editarPeriodo/salvar', 'AdminController@salvarPeriodo')->name('salvarPeriodo');
+
+Route::get('/verPlanos/{period?}', 'AdminController@listarPlanos')->name('listarPlanos');
+
+Route::get('/verRelatorios/{period?}', 'AdminController@listarRelatorios')->name('listarRelatorios');

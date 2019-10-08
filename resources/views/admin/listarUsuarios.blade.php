@@ -8,7 +8,7 @@
             <h5>Usuários: </h5>
         </div>
 
-        <table class="highlight">
+        <table class="highlight responsive-table">
 
             <thead>
             <tr>
@@ -34,7 +34,8 @@
                 </td>
                 <td>Alvin</td>
                 <td>24/10/2019</td>
-                <td>a b</td>
+                <td><a href="{{ route('verUsuario', 1) }}" class="black-text tooltipped" data-position="left" data-tooltip="Ver informações do Usuário"><i class="material-icons">info_outline</i></a>
+                    <a href="{{ route('editarPermissao', 1) }}" class="black-text tooltipped" data-position="right" data-tooltip="Implantar/Editar permissões do Usuário"><i class="material-icons padding-1-left">settings</i></a></td>
             </tr>
             <tr>
                 <td>
@@ -45,8 +46,8 @@
                 </td>
                 <td>Alan</td>
                 <td>02/05/2018</td>
-                <td>a b</td>
-            </tr>
+                <td><a href="{{ route('verUsuario', 1) }}" class="black-text tooltipped" data-position="left" data-tooltip="Ver informações do Usuário"><i class="material-icons">info_outline</i></a>
+                    <a href="{{ route('editarPermissao', 1) }}" class="black-text tooltipped" data-position="right" data-tooltip="Implantar/Editar permissões do Usuário"><i class="material-icons padding-1-left">settings</i></a></td>
             <tr>
                 <td>
                     <label>
@@ -56,11 +57,16 @@
                 </td>
                 <td>Jonathan</td>
                 <td>Nunca Acessou</td>
-                <td>a b</td>
+                <td><a href="{{ route('verUsuario', 1) }}" class="black-text tooltipped" data-position="left" data-tooltip="Ver informações do Usuário"><i class="material-icons">info_outline</i></a>
+                    <a href="{{ route('editarPermissao', 1) }}" class="black-text tooltipped" data-position="right" data-tooltip="Implantar/Editar permissões do Usuário"><i class="material-icons padding-1-left">settings</i></a></td>
             </tr>
             </tbody>
 
         </table>
     </div>
-
+    <script>
+        $(document).ready(function(){
+            $('.tooltipped').tooltip();
+        });
+    </script>
 @endsection

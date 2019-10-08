@@ -4,7 +4,7 @@
 
     <div class="container" style="margin-top: 1rem;">
 
-        @include('includes.alerts')
+
 
         <form action="{{ route('salvarMinhasInfosEditadas') }}" method="post">
 
