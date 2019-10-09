@@ -19,7 +19,7 @@
 
             <div class="row">
                 <div class="input-field col s6 offset-s3">
-                    <input id="name" type="text" class="validate" value="{{ Auth::user()->name }}">
+                    <input id="name" name="name" type="text" class="validate" value="{{ Auth::user()->name }}">
                     <label for="name">Nome</label>
                 </div>
             </div>
@@ -34,7 +34,7 @@
 
             <div class="row">
                 <div class="input-field col s6 offset-s3">
-                    <input id="knowledge_area" type="text" class="validate" value="Area A">
+                    <input id="knowledge_area" name="knowledge_area" type="text" class="validate" value="{{ Auth::user()->knowledge_area }}">
                     <label for="knowledge_area">Área de Conhecimento</label>
                 </div>
             </div>
@@ -46,13 +46,21 @@
                     </div>
                     <div class="input-field col xl4 l4 m4 s4">
                         <label>
-                            <input class="with-gap" name="teaching" type="radio" value="EBTT" checked/>
-                            <span>EBTT</span>
+                            @if(Auth::user()->teaching == 'EBTT')
+                                <input class="with-gap" name="teaching" type="radio" value="EBTT" checked/>
+                            @else
+                                <input class="with-gap" name="teaching" type="radio" value="EBTT" />
+                            @endif
+                                <span>EBTT</span>
                         </label>
                     </div>
                     <div class="input-field col xl4 l4 m4 s4">
                         <label>
-                            <input class="with-gap" name="teaching" type="radio" value="ES"/>
+                            @if(Auth::user()->teaching == 'ES')
+                                <input class="with-gap" name="teaching" type="radio" value="ES" checked/>
+                            @else
+                                <input class="with-gap" name="teaching" type="radio" value="ES"/>
+                            @endif
                             <span>ES</span>
                         </label>
                     </div>
@@ -66,25 +74,41 @@
                     </div>
                     <div class="input-field col xl2 l2 m2 s6">
                         <label>
-                            <input class="with-gap" name="regime" type="radio" value="20"/>
+                            @if(Auth::user()->regime == '20')
+                                <input class="with-gap" name="regime" type="radio" value="20" checked/>
+                            @else
+                                <input class="with-gap" name="regime" type="radio" value="20"/>
+                            @endif
                             <span>20h</span>
                         </label>
                     </div>
                     <div class="input-field col xl2 l2 m2 s6">
                         <label>
-                            <input class="with-gap" name="regime" type="radio" value="40"/>
+                            @if(Auth::user()->regime == '40')
+                                <input class="with-gap" name="regime" type="radio" value="40" checked/>
+                            @else
+                                <input class="with-gap" name="regime" type="radio" value="40"/>
+                            @endif
                             <span>40h</span>
                         </label>
                     </div>
                     <div class="input-field col xl2 l2 m2 s6">
                         <label>
-                            <input class="with-gap" name="regime" type="radio" value="DE"/>
+                            @if(Auth::user()->regime == 'DE')
+                                <input class="with-gap" name="regime" type="radio" value="DE" checked/>
+                            @else
+                                <input class="with-gap" name="regime" type="radio" value="DE"/>
+                            @endif
                             <span>DE</span>
                         </label>
                     </div>
                     <div class="input-field col xl2 l2 m2 s6 offset-s6">
                         <label>
-                            <input class="with-gap" name="regime" type="radio" value="Visitante"/>
+                            @if(Auth::user()->regime == 'Visitante')
+                                <input class="with-gap" name="regime" type="radio" value="Visitante" checked/>
+                            @else
+                                <input class="with-gap" name="regime" type="radio" value="Visitante"/>
+                            @endif
                             <span>Visitante</span>
                         </label>
                     </div>

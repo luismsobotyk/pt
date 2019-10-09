@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\User;
+use Request;
+
 use App\Models\WorkPlan;
+use Illuminate\Support\Facades\DB;
 use Nexmo\Message\Shortcode\Alert;
 
 class MainController extends Controller
@@ -20,8 +23,36 @@ class MainController extends Controller
         return view('editarMeuPerfil');
     }
     public function saveEditedProfileInfos(){
-        //return redirect()->route('editarMinhasInfos')->with('error', 'Houve um problema ao atualizar seus dados.'); // se der erro
-        return redirect()->route('editarMinhasInfos')->with('success', 'Seus dados foram atualizados.'); // se der certo
+        $params= Request::all();
+
+        try{
+            $user= User::find(auth()->user()->id);
+            $user->name = $params['name'];
+
+            $user->knowledge_area = $params['knowledge_area'];
+
+            if($params['teaching']=='EBTT'){
+                $user->teaching = 'EBTT';
+            }else{
+                $user->teaching = 'ES';
+            }
+
+            if($params['regime']=='20'){
+                $user->regime = '20';
+            }else if($params['regime']=='40') {
+                $user->regime = '40';
+            }else if($params['regime']=='DE') {
+                $user->regime = 'DE';
+            }else{
+                $user->regime = 'Visitante';
+            }
+
+            $user->save();
+
+            return redirect()->route('editarMinhasInfos')->with('success', 'Seus dados foram atualizados.');
+        }catch(Exception $e){
+            return redirect()->route('editarMinhasInfos')->with('error', 'Houve um problema ao salvar atualizar seus dados, contate o administrador.');
+        }
     }
 
     public function verNotificacoes(){

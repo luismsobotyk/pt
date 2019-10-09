@@ -24,15 +24,27 @@
 
 
                     <tr>
-                        <td>Área de Conhecimento: <b>Área Tal</b></td>
+                        @if(is_null(Auth::user()->knowledge_area))
+                            <td>Área de Conhecimento: <b>Não Informado</b></td>
+                        @else
+                            <td>Área de Conhecimento: <b>{{ Auth::user()->knowledge_area }}</b></td>
+                        @endif
                     </tr>
 
                     <tr>
-                        <td>Magistério: <b>Magistério EBTT ou ES</b></td>
+                        @if(is_null(Auth::user()->teaching))
+                            <td>Magistério: <b>Não Informado</b></td>
+                        @else
+                            <td>Magistério: <b>{{ Auth::user()->teaching }}</b></td>
+                        @endif
                     </tr>
 
                     <tr>
-                        <td>Regime de Trabalho: <b>40h</b></td>
+                        @if(is_null(Auth::user()->regime))
+                            <td>Regime de Trabalho: <b>Não Informado</b></td>
+                        @else
+                            <td>Regime de Trabalho: <b>{{ Auth::user()->regime }}</b></td>
+                        @endif
                     </tr>
 
 
