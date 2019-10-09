@@ -17,12 +17,12 @@ class CreateWorkPlansTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('situation_id');
-            $table->date('opening_date');
-            $table->date('closing_date');
+            $table->unsignedInteger('period_id');
             $table->date('send_date');
             $table->date('approval_date');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('situation_id')->references('id')->on('situations');
+            $table->foreign('period_id')->references('id')->on('periods');
             $table->timestamps();
         });
     }
