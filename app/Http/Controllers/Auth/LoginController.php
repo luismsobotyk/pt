@@ -82,6 +82,7 @@ class LoginController extends Controller
             'provider'  => strtoupper($provider),
             'provider_id'   => $user->id
         ]);
+        //return dd($user->id);
     }
 
 

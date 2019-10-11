@@ -7,30 +7,25 @@
             @csrf
             <h5>Editando Período: 2019/1</h5>
             <br/>
-            <div class="row">
-                <div class="input-field col xl6 l6 m6 s12">
-                    <input id="period" type="text" class="validate" value="2019/1">
-                    <label for="period">Perído regente</label>
-                </div>
-            </div>
 
-            <div class="row">
+
+            <div class="row margin-6-top">
 
                 <div class="input-field col xl6 l6 m6 s12">
-                    <input type="text" class="datepicker" name="workPlanOpeningDate" value="01/01/2019">
+                    <input type="date" class="datepicker" name="work_plan_opening_date" value="{{ $periodo->work_plan_opening_date }}">
                     <label for="workPlanOpeningDate">Data de Abertura do Plano</label>
                 </div>
                 <div class="input-field col xl6 l6 m6 s12">
-                    <input type="text" class="datepicker" name="workPlanClosingDate" value="01/01/2019">
+                    <input type="date" class="datepicker" name="work_plan_closing_date" value="{{ $periodo->work_plan_closing_date }}">
                     <label for="workPlanClosingDate">Data de Fechamento do Plano</label>
                 </div>
 
                 <div class="input-field col xl6 l6 m6 s12">
-                    <input type="text" class="datepicker" name="reportOpeningDate" value="01/01/2019">
+                    <input type="date" class="datepicker" name="report_opening_date" value="{{ $periodo->report_opening_date }}">
                     <label for="reportOpeningDate">Data de Abertura do Relatório</label>
                 </div>
                 <div class="input-field col xl6 l6 m6 s12">
-                    <input type="text" class="datepicker" name="reportClosingDate" value="01/01/2019">
+                    <input type="date" class="datepicker" name="report_closing_date" value="{{ $periodo->report_closing_date }}">
                     <label for="reportClosingDate">Data de Fechamento do Relatório</label>
                 </div>
 
@@ -45,12 +40,9 @@
             </div>
         </form>
     </div>
-
     <script>
         $(document).ready(function () {
-            $('.datepicker').datepicker({
-                format: 'dd/mm/yyyy',
-            });
+            $('#period').mask('0000/0');
         });
     </script>
 @endsection

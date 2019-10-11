@@ -1,10 +1,13 @@
 @if ($errors->any())
     <script>
-        var htmlText= "";
+        {{--var htmlText= "";
         @foreach ($errors->all() as $error)
-            htmlText= htmlText+"<p>{{ $error }}</p>";
+            htmlText= htmlText+"<li>{{ $error }}</li>";
         @endforeach
-        M.toast({html: htmlText, displayLength: '10000', classes: 'amber lighten-1'});
+        M.toast({html: htmlText, displayLength: '10000', classes: 'amber lighten-1'});--}}
+        @foreach ($errors->all() as $error)
+            M.toast({html: '{{ $error }}' , displayLength: '15000', classes: 'amber lighten-1'});
+        @endforeach
     </script>
 @endif
 

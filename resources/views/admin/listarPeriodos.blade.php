@@ -27,7 +27,21 @@
             </thead>
 
             <tbody>
-            <tr>
+
+            @foreach($periodos as $p)
+                <tr>
+                    <td>{{ $p->period }}</td>
+                    <td>{{ date('d/m/Y', strtotime($p->work_plan_opening_date)) }}{{-- $p->work_plan_opening_date --}}</td>
+                    <td>{{ date('d/m/Y', strtotime($p->work_plan_closing_date)) }}</td>
+                    <td>{{ date('d/m/Y', strtotime($p->report_opening_date)) }}</td>
+                    <td>{{ date('d/m/Y', strtotime($p->report_closing_date)) }}</td>
+                    <td><a href="{{ route('editarPeriodo', $p->id) }}" class="black-text tooltipped" data-position="left"
+                           data-tooltip="Editar Período"><i class="material-icons">edit</i></a>
+                        <a href="{{ route('listarPlanos', $p->id) }}" class="black-text tooltipped" data-position="right"
+                           data-tooltip="Ver Planos desse Período"><i class="material-icons">search</i></a></td>
+                </tr>
+            @endforeach
+            <!--tr>
                 <td>2019/2</td>
                 <td>01/07/2019</td>
                 <td>31/12/2019</td>
@@ -70,7 +84,7 @@
                        data-tooltip="Editar Período"><i class="material-icons">edit</i></a>
                     <a href="{{ route('listarPlanos', 20191) }}" class="black-text tooltipped" data-position="right"
                        data-tooltip="Ver Planos desse Período"><i class="material-icons">search</i></a></td>
-            </tr>
+            </tr-->
             </tbody>
 
         </table>
