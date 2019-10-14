@@ -8,11 +8,10 @@
             <div class="col s6 left-align">
                 <label>Período</label>
 
-                <select class="browser-default">
-                    <option value="20191" selected>2019/1</option>
-                    <option value="2018/2">2018/2</option>
-                    <option value="2018/1">2018/1</option>
-                    <option value="2017/2">2017/2</option>
+                <select class="">
+                    @foreach($periodos as $per)
+                        <option value="{{ $per->period }}" @if($periodoSelecionado==$per->id) selected @endif>{{ $per->period }}</option>
+                    @endforeach
                 </select>
 
             </div>

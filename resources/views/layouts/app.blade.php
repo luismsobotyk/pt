@@ -60,17 +60,20 @@
         .nav-wrapper{
             background-color: #111111;
         }
-        .dropdown-content{
+        /*.dropdown-content #notifications{
             background-color: #111111;
         }
-        .dropdown-content li a{
+        .dropdown-content #notifications li a{
             color: #e0e0e0;
         }
-        .dropdown-content li a:hover{
+        .dropdown-content #notifications li a:hover{
             background-color: #424242;
         }
-        .dropdown-content li a center{
+        .dropdown-content #notifications li a center{
             text-align: center !important;
+        }*/
+        a.hover-black:hover{
+           color: black !important;
         }
         table.highlight>tbody>tr:hover{
             background-color: #e0e0e0;
@@ -141,12 +144,12 @@
                 <li><a class="dropdown-trigger" data-target="notifications" href="#notifications">Notificações<i class="material-icons left">notifications</i></a></li>
 
 
-                <ul id='notifications' class='dropdown-content'>
-                    <li><a href="#!">Seu plano 2019/1 foi rejeitado por Fulano de Tal, revise-o.<span class="new badge right amber darken-3"></span></a></li>
-                    <li><a href="#!">Seu plano 2018/2 foi aprovado.</a></li>
-                    <li><a href="#!">Seu plano 2018/1 foi aprovado.</a></li>
+                <ul id='notifications' class='dropdown-content blue-grey darken-4'>
+                    <li><a href="#!" class="white-text hover-black">Seu plano 2019/1 foi rejeitado por Fulano de Tal, revise-o.<span class="new badge right amber darken-3"></span></a></li>
+                    <li><a href="#!" class="white-text hover-black">Seu plano 2018/2 foi aprovado.</a></li>
+                    <li><a href="#!" class="white-text hover-black">Seu plano 2018/1 foi aprovado.</a></li>
                     <li class="divider" tabindex="-1"></li>
-                    <li><a href="{{ route('notificacoes') }}" class="center">Ver Tudo<i class="material-icons left">notifications</i></a></li>
+                    <li><a href="{{ route('notificacoes') }}" class="center white-text hover-black">Ver Tudo<i class="material-icons left">notifications</i></a></li>
                 </ul>
             </ul>
         </div>
@@ -221,7 +224,7 @@
     <li><a href="{{ route('meusRelatorios') }}">Meus Relatórios</a></li>
     <li><a href="{{ route('preencherRelatorio') }}">Preencher Relatório</a></li>
     <div class="divider"></div>
-    <li><a href="{{ route('logout') }}">Sair</a></li>
+    <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>
 </ul>
 
 

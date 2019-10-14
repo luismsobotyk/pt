@@ -18,8 +18,8 @@ class CreateWorkPlansTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('situation_id');
             $table->unsignedInteger('period_id');
-            $table->date('send_date');
-            $table->date('approval_date');
+            $table->date('send_date')->nullable();
+            $table->date('approval_date')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('situation_id')->references('id')->on('situations');
             $table->foreign('period_id')->references('id')->on('periods');

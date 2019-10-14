@@ -2,21 +2,16 @@
 
 @section('abaPreenchimento')
 
-@foreach($registros as $registro) 
-    <b>{{ $registro->situation_id }}</b>    
-    
-     
-
-
     <div class="row" style="margin-top: 7%;">
         <form class="col s12" id="formIdentificacao" method="post">
 
             @csrf
+            <input type="hidden" name="period" value="">
 
             <div class="row">
 
                 <div class="input-field col xl6 l6 m6 s12">
-                    <input type="text" id="knowledge_area" class="autocomplete" value="{{ $registro->Identification->knowledge_area }} " name="knowledge_area">
+                    <input type="text" id="knowledge_area" class="autocomplete" value="" name="knowledge_area">
                     <label for="knowledge_area">Área de Conhecimento</label>
                 </div>
 
@@ -25,13 +20,13 @@
                 </div>
                 <div class="input-field col xl2 l2 m2 s4">
                     <label>
-                        <input class="with-gap" name="teaching" @if ($registro->Identification->teaching == 'EBTT')     checked  @endif     type="radio" value=""/>
+                        <input class="with-gap" name="teaching" type="radio" value=""/>
                         <span>EBTT</span>
                     </label>
                 </div>
                 <div class="input-field col xl2 l2 m2 s4">
                     <label>
-                        <input class="with-gap" name="teaching" type="radio" @if ($registro->Identification->teaching == 'ES')     checked  @endif value="ES"/>
+                        <input class="with-gap" name="teaching" type="radio"  value="ES"/>
                         <span>ES</span>
                     </label>
                 </div>
@@ -43,32 +38,32 @@
                 </div>
                 <div class="input-field col xl2 l2 m2 s6">
                     <label>
-                        <input class="with-gap" name="regime" type="radio"  @if ($registro->Identification->regime == '20')     checked  @endif value="20"/>
+                        <input class="with-gap" name="regime" type="radio"   value="20"/>
                         <span>20h</span>
                     </label>
                 </div>
                 <div class="input-field col xl2 l2 m2 s6">
                     <label>
-                        <input class="with-gap" name="regime" type="radio" @if ($registro->Identification->regime == '40')     checked  @endif value="40"/>
+                        <input class="with-gap" name="regime" type="radio" value="40"/>
                         <span>40h</span>
                     </label>
                 </div>
                 <div class="input-field col xl2 l2 m2 s6">
                     <label>
-                        <input class="with-gap" name="regime" type="radio" @if ($registro->Identification->regime == 'DE')     checked  @endif value="DE"/>
+                        <input class="with-gap" name="regime" type="radio"  value="DE"/>
                         <span>DE</span>
                     </label>
                 </div>
                 <div class="input-field col xl2 l2 m2 s6 offset-s6">
                     <label>
-                        <input class="with-gap" name="regime" type="radio" @if ($registro->Identification->regime == 'Visitante')     checked  @endif value="Visitante"/>
+                        <input class="with-gap" name="regime" type="radio" value="Visitante"/>
                         <span>Visitante</span>
                     </label>
                 </div>
             </div>
         </form>
     </div>
-@endforeach
+
     <footer class="page-footer grey lighten-3 grey-text right-align">
         <div class="col s6">
             <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"

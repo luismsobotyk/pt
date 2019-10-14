@@ -13,8 +13,9 @@ class  SituationsTableSeeder  extends Seeder
      */
     public function run()
     {
-        Situation::create(['type' => 'aberto']);
-        Situation::create(['type' => 'fechado']);
-        Situation::create(['type' => 'reaberto']);       
+        Situation::create(['type' => 'Pendente']);
+        Situation::create(['type' => 'Aguardando Alteração']);
+        Situation::create(['type' => 'Aguardando Aprovação']);
+        Situation::create(['type' => 'Aprovado']);
     }
 }

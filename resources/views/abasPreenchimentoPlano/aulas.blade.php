@@ -6,6 +6,7 @@
         <form class="col s12" id="formAulas" method="post">
             @csrf
 
+
             <div class="input-field col xl5 l5 m5 s12">
                 <input type="text" id="discipline" name="discipline">
                 <label for="discipline">Disciplina</label>
@@ -38,26 +39,19 @@
             </div>
         </div>
 
-        @foreach($registros as $registro) 
-        <b>{{ $registro->situation_id }}</b>  
-
-            @php $classes = $registro->classes @endphp
-
-            @foreach($classes as $class) 
-
-                <!-- LINHAS ADICIONADAS -->
+                         <!-- LINHAS ADICIONADAS -->
 
                 <div class="row">
                     <div class="input-field col xl4 l4 m4 s12">
-                        <input type="text" id="discipline" name="discipline" value="{{ $class->discipline }}" disabled>
+                        <input type="text" id="discipline" name="discipline" value="" disabled>
                         <label for="discipline">Disciplina</label>
                     </div>
                     <div class="input-field col xl4 l4 m4 s12">
-                        <input type="text" id="course" name="course" value="{{ $class->course }}" disabled>
+                        <input type="text" id="course" name="course" value="" disabled>
                         <label for="course">Curso</label>
                     </div>
                     <div class="input-field col xl2 l2 m2 s8">
-                        <input type="number" id="workload" name="workload" min="0" max="40" value="{{ $class->workload }}" disabled>
+                        <input type="number" id="workload" name="workload" min="0" max="40" value="" disabled>
                         <label for="workload">CH</label>
                     </div>
                     <div class="input-field col xl1 l1 m1 s2">
@@ -72,8 +66,6 @@
                     </div>
                 </div>
 
-            @endforeach
-        @endforeach
         <!--   
         <div class="row">
             <div class="input-field col xl4 l4 m4 s12">

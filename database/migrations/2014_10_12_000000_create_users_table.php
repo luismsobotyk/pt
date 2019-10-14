@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->String('regime', 9)->nullable();
 
             //permissoes do usuario
-            $table->boolean('registerPlan')->default('0');
+            $table->boolean('registerPlan')->default('1');
             $table->boolean('seePlans')->default('0');
             $table->boolean('seeUsersList')->default('0');
             $table->boolean('setPermissions')->default('0');
