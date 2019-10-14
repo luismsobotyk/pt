@@ -77,38 +77,11 @@ class MainController extends Controller
 
     public function preencherPlano($numAba = null)
     {
+
         if ($numAba == 1) {
-            $id = auth()->user()->id;
-            $registros = WorkPlan::where('user_id', $id)
-                ->where('situation_id', '1')
-                ->with('Identification')
-                ->get();
-
-            if (!empty($registros)) {
-
-                return view('abasPreenchimentoPlano.identificacao', compact('registros'));
-                //return view('abasPreenchimentoPlano.identificacao')->with(['registros' => $registros]);
-            } else {
-                return redirect()
-                    ->route('home')
-                    ->with('error', 'Você não tem planos para preencher!');
-            }
+            return view('abasPreenchimentoPlano.identificacao');
         } else if ($numAba == 2) {
-
-            $id = auth()->user()->id;
-            $registros = WorkPlan::where('user_id', $id)
-                ->where('situation_id', '1')
-                ->with('Classes')
-                ->get();
-
-            if (!empty($registros)) {
-
-                return view('abasPreenchimentoPlano.aulas', compact('registros'));
-            } else {
-                return redirect()
-                    ->route('home')
-                    ->with('error', 'Você não tem planos para preencher!');
-            }
+            return view('abasPreenchimentoPlano.aulas');
         } else if ($numAba == 3) {
             return view('abasPreenchimentoPlano.ensino');
         } else if ($numAba == 4) {
@@ -118,25 +91,7 @@ class MainController extends Controller
         } else if ($numAba == 6) {
             return view('abasPreenchimentoPlano.administrativas');
         } else {
-
-            $id = auth()->user()->id;
-            $registros = WorkPlan::where('user_id', $id)
-                ->where('situation_id', '1' or '3')
-                ->with('Identification')
-                ->with('Classes')
-                ->with('TeachingActivities')
-                ->with('ResearchActivities')
-                ->with('ExtensionActivities')
-                ->with('AdministrativeActivities')
-                ->get();
-            //dd($registros);
-            if (!empty($registros)) {
-                return view('abasPreenchimentoPlano.identificacao', compact('registros'));
-            } else {
-                return redirect()
-                    ->route('home')
-                    ->with('error', 'Você não tem planos para preencher!');
-            }
+            return view('abasPreenchimentoPlano.identificacao');
         }
     }
 

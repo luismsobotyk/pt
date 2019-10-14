@@ -3,9 +3,9 @@
 @section('content')
 
     <div class="container" style="margin-top: 6rem;">
-        <form action="{{ route('salvarPeriodo', 1) }}" method="post">
+        <form action="{{ route('salvarPeriodo', $periodo->id) }}" method="post">
             @csrf
-            <h5>Editando Período: 2019/1</h5>
+            <h5>Editando Período: {{ $periodo->period }}</h5>
             <br/>
 
 
