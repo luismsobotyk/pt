@@ -21,7 +21,7 @@
 
         <div class="row">
             <div class="col s6">
-                <div class="card blue-grey lighten-2" style="height: 6rem">
+                <div class="card blue-grey lighten-4" style="height: 6rem">
                     <div class="card-content white-text">
 
                     </div>
