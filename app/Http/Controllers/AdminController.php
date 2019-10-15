@@ -67,8 +67,8 @@ class AdminController extends Controller
         $periodo->report_opening_date= $request->report_opening_date;
         $periodo->report_closing_date= $request->report_closing_date;
         $periodo->save();
-        return dd($periodo->period);
-        //return redirect()->route('listarPeriodos', 1)->with('success', 'O período '.$periodo->period.' foi atualizado');
+        //return dd($periodo->period);
+        return redirect()->route('listarPeriodos', 1)->with('success', 'O período '.$periodo->period.' foi atualizado');
     }
 
     public function listarPlanos($period= 0){

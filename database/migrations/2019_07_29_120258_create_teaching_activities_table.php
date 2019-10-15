@@ -18,6 +18,8 @@ class CreateTeachingActivitiesTable extends Migration
             $table->unsignedInteger('plan_id');
             $table->String('activity');
             $table->double('workload');
+            $table->unsignedInteger('justification_id')->default(null);
+            $table->foreign('justification_id')->references('id')->on('justifications');
             $table->foreign('plan_id')->references('id')->on('work_plans');
             $table->timestamps();
         });

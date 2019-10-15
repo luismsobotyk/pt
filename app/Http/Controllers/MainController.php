@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Identification;
+use App\Models\Period;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Request;
 
 use App\Models\WorkPlan;
@@ -75,28 +78,28 @@ class MainController extends Controller
         return view('meusRelatorios');
     }
 
-    public function preencherPlano($numAba = null)
-    {
-
+    public function preencherPlano($numAba = null){
+        $wp= WorkPlan::where('user_id', '=', Auth::user()->id)->where('situation_id', '!=', '3')->where('situation_id', '!=', '4')->orderBy('period_id')->first();
+        $period= Period::find($wp->period_id);
         if ($numAba == 1) {
-            return view('abasPreenchimentoPlano.identificacao');
+            $identificacao= Identification::where('plan_id', '=', '$wp->id');
+            return view('abasPreenchimentoPlano.identificacao')->with('work_plan', $wp)->with('periodo', $period)->with('data', $identificacao);
         } else if ($numAba == 2) {
-            return view('abasPreenchimentoPlano.aulas');
+            return view('abasPreenchimentoPlano.aulas')->with('work_plan', $wp)->with('periodo', $period);
         } else if ($numAba == 3) {
-            return view('abasPreenchimentoPlano.ensino');
+            return view('abasPreenchimentoPlano.ensino')->with('work_plan', $wp)->with('periodo', $period);
         } else if ($numAba == 4) {
-            return view('abasPreenchimentoPlano.pesquisa');
+            return view('abasPreenchimentoPlano.pesquisa')->with('work_plan', $wp)->with('periodo', $period);
         } else if ($numAba == 5) {
-            return view('abasPreenchimentoPlano.extensao');
+            return view('abasPreenchimentoPlano.extensao')->with('work_plan', $wp)->with('periodo', $period);
         } else if ($numAba == 6) {
-            return view('abasPreenchimentoPlano.administrativas');
+            return view('abasPreenchimentoPlano.administrativas')->with('work_plan', $wp)->with('periodo', $period);
         } else {
-            return view('abasPreenchimentoPlano.identificacao');
+            return view('abasPreenchimentoPlano.identificacao')->with('work_plan', $wp)->with('periodo', $period);
         }
     }
 
-    public function salvarPlano()
-    {
+    public function salvarPlano(){
         return "ta salvo";
     }
 

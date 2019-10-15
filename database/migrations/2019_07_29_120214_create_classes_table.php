@@ -19,6 +19,8 @@ class CreateClassesTable extends Migration
             $table->String('discipline');
             $table->String('course');
             $table->double('workload');
+            $table->unsignedInteger('justification_id')->default(null);
+            $table->foreign('justification_id')->references('id')->on('justifications');
             $table->foreign('plan_id')->references('id')->on('work_plans');
             $table->timestamps();
         });

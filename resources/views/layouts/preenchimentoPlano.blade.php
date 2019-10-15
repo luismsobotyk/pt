@@ -21,9 +21,15 @@
 
         <div class="row">
             <div class="col s6">
-                <div class="card blue-grey lighten-4" style="height: 6rem">
+                <div class="card" style="background: #394f67; height: 6rem">
                     <div class="card-content white-text">
-
+                        <span class="card-title">
+                            @if(isset($periodo))
+                                {{ $periodo->period }}
+                            @else
+                                <B>ERROR</B>
+                            @endif
+                        </span>
                     </div>
                 </div>
             </div>

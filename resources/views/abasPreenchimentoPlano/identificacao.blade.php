@@ -6,12 +6,12 @@
         <form class="col s12" id="formIdentificacao" method="post">
 
             @csrf
-            <input type="hidden" name="period" value="">
+            <input type="hidden" name="id" value="{{ $periodo->id }}">
 
             <div class="row">
 
                 <div class="input-field col xl6 l6 m6 s12">
-                    <input type="text" id="knowledge_area" class="autocomplete" value="" name="knowledge_area">
+                    <input type="text" id="knowledge_area" class="autocomplete" value="@if(isset($data)) {{ $data->knowledge_area }} @endif" name="knowledge_area">
                     <label for="knowledge_area">Área de Conhecimento</label>
                 </div>
 
