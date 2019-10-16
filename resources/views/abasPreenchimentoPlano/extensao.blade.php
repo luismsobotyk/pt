@@ -1,4 +1,4 @@
-@extends('layouts.preenchimentoPlano')
+salvarExtensao@extends('layouts.preenchimentoPlano')
 
 @section('abaPreenchimento')
 
@@ -157,13 +157,13 @@
         <div class="row">
             <div class="col s6 left-align">
                 <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                        form="formExtensao" formaction="{{ route('preencherPlano', 4) }}">Anterior
+                        form="formExtensao" formaction="{{ route('salvarExtensao', 4) }}">Anterior
                     <i class="material-icons left">arrow_back</i>
                 </button>
             </div>
             <div class="col s6 right-align">
                 <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                        form="formExtensao" formaction="{{ route('preencherPlano', 6) }}">Próxima
+                        form="formExtensao" formaction="{{ route('salvarExtensao', 6) }}">Próxima
                     <i class="material-icons right">arrow_forward</i>
                 </button>
             </div>
@@ -181,27 +181,27 @@
         $("#opExtensao").addClass("active");
 
         $("#opIdentificacao a").on("click", function () {
-            $("#formExtensao").attr('action', '{{ route('preencherPlano', 1) }}').submit();
+            $("#formExtensao").attr('action', '{{ route('salvarExtensao', 1) }}').submit();
         });
 
         $("#opAulas a").on("click", function () {
-            $("#formExtensao").attr('action', '{{ route('preencherPlano', 2) }}').submit();
+            $("#formExtensao").attr('action', '{{ route('salvarExtensao', 2) }}').submit();
         });
 
         $("#opEnsino a").on("click", function () {
-            $("#formExtensao").attr('action', '{{ route('preencherPlano', 3) }}').submit();
+            $("#formExtensao").attr('action', '{{ route('salvarExtensao', 3) }}').submit();
         });
 
         $("#opPesquisa a").on("click", function () {
-            $("#formExtensao").attr('action', '{{ route('preencherPlano', 4) }}').submit();
+            $("#formExtensao").attr('action', '{{ route('salvarExtensao', 4) }}').submit();
         });
 
         $("#opExtensao a").on("click", function () {
-            $("#formExtensao").attr('action', '{{ route('preencherPlano', 5) }}').submit();
+            $("#formExtensao").attr('action', '{{ route('salvarExtensao', 5) }}').submit();
         });
 
         $("#opAdministrativas a").on("click", function () {
-            $("#formExtensao").attr('action', '{{ route('preencherPlano', 6) }}').submit();
+            $("#formExtensao").attr('action', '{{ route('salvarExtensao', 6) }}').submit();
         });
     </script>
 

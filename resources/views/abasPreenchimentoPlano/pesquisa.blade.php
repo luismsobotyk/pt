@@ -157,13 +157,13 @@
         <div class="row">
             <div class="col s6 left-align">
                 <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                        form="formPesquisa" formaction="{{ route('preencherPlano', 3) }}">Anterior
+                        form="formPesquisa" formaction="{{ route('salvarPesquisa', 3) }}">Anterior
                     <i class="material-icons left">arrow_back</i>
                 </button>
             </div>
             <div class="col s6 right-align">
                 <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                        form="formPesquisa" formaction="{{ route('preencherPlano', 5) }}">Próxima
+                        form="formPesquisa" formaction="{{ route('salvarPesquisa', 5) }}">Próxima
                     <i class="material-icons right">arrow_forward</i>
                 </button>
             </div>
@@ -182,27 +182,27 @@
 
 
         $("#opIdentificacao a").on("click", function () {
-            $("#formPesquisa").attr('action', '{{ route('preencherPlano', 1) }}').submit();
+            $("#formPesquisa").attr('action', '{{ route('salvarPesquisa', 1) }}').submit();
         });
 
         $("#opAulas a").on("click", function () {
-            $("#formPesquisa").attr('action', '{{ route('preencherPlano', 2) }}').submit();
+            $("#formPesquisa").attr('action', '{{ route('salvarPesquisa', 2) }}').submit();
         });
 
         $("#opEnsino a").on("click", function () {
-            $("#formPesquisa").attr('action', '{{ route('preencherPlano', 3) }}').submit();
+            $("#formPesquisa").attr('action', '{{ route('salvarPesquisa', 3) }}').submit();
         });
 
         $("#opPesquisa a").on("click", function () {
-            $("#formPesquisa").attr('action', '{{ route('preencherPlano', 4) }}').submit();
+            $("#formPesquisa").attr('action', '{{ route('salvarPesquisa', 4) }}').submit();
         });
 
         $("#opExtensao a").on("click", function () {
-            $("#formPesquisa").attr('action', '{{ route('preencherPlano', 5) }}').submit();
+            $("#formPesquisa").attr('action', '{{ route('salvarPesquisa', 5) }}').submit();
         });
 
         $("#opAdministrativas a").on("click", function () {
-            $("#formPesquisa").attr('action', '{{ route('preencherPlano', 6) }}').submit();
+            $("#formPesquisa").attr('action', '{{ route('salvarPesquisa', 6) }}').submit();
         });
     </script>
 

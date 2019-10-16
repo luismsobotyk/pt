@@ -19,7 +19,7 @@ class CreateIdentificationsTable extends Migration
             $table->String('knowledge_area');
             $table->String('teaching', 4);
             $table->String('regime', 9);
-            $table->unsignedInteger('justification_id')->default(null);
+            $table->unsignedInteger('justification_id')->nullable(true);
             $table->foreign('justification_id')->references('id')->on('justifications');
             $table->foreign('plan_id')->references('id')->on('work_plans');
             $table->timestamps();

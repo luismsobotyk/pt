@@ -153,13 +153,13 @@
         <div class="row">
             <div class="col s6 left-align">
                 <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                        form="formAulas" formaction="{{ route('preencherPlano', 1) }}">Anterior
+                        form="formAulas" formaction="{{ route('salvarAulas', 1) }}">Anterior
                     <i class="material-icons left">arrow_back</i>
                 </button>
             </div>
             <div class="col s6 right-align">
                 <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                        form="formAulas" formaction="{{ route('preencherPlano', 3) }}">Próxima
+                        form="formAulas" formaction="{{ route('salvarAulas', 3) }}">Próxima
                     <i class="material-icons right">arrow_forward</i>
                 </button>
             </div>
@@ -174,27 +174,27 @@
 
 
         $("#opIdentificacao a").on("click", function () {
-            $("#formAulas").attr('action', '{{ route('preencherPlano', 1) }}').submit();
+            $("#formAulas").attr('action', '{{ route('salvarAulas', 1) }}').submit();
         });
 
         $("#opAulas a").on("click", function () {
-            $("#formAulas").attr('action', '{{ route('preencherPlano', 2) }}').submit();
+            $("#formAulas").attr('action', '{{ route('salvarAulas', 2) }}').submit();
         });
 
         $("#opEnsino a").on("click", function () {
-            $("#formAulas").attr('action', '{{ route('preencherPlano', 3) }}').submit();
+            $("#formAulas").attr('action', '{{ route('salvarAulas', 3) }}').submit();
         });
 
         $("#opPesquisa a").on("click", function () {
-            $("#formAulas").attr('action', '{{ route('preencherPlano', 4) }}').submit();
+            $("#formAulas").attr('action', '{{ route('salvarAulas', 4) }}').submit();
         });
 
         $("#opExtensao a").on("click", function () {
-            $("#formAulas").attr('action', '{{ route('preencherPlano', 5) }}').submit();
+            $("#formAulas").attr('action', '{{ route('salvarAulas', 5) }}').submit();
         });
 
         $("#opAdministrativas a").on("click", function () {
-            $("#formAulas").attr('action', '{{ route('preencherPlano', 6) }}').submit();
+            $("#formAulas").attr('action', '{{ route('salvarAulas', 6) }}').submit();
         });
     </script>
 

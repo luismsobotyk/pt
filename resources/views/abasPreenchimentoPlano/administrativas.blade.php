@@ -1,4 +1,4 @@
-@extends('layouts.preenchimentoPlano')
+salvarAdministrativas@extends('layouts.preenchimentoPlano')
 
 @section('abaPreenchimento')
     <!-- Modal com exemplos de atividades de Extensão -->
@@ -177,7 +177,7 @@
         <div class="row">
             <div class="col s6 left-align">
                 <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                        form="formAdministrativas" formaction="{{ route('preencherPlano', 5) }}">Anterior
+                        form="formAdministrativas" formaction="{{ route('salvarAdministrativas', 5) }}">Anterior
                     <i class="material-icons left">arrow_back</i>
                 </button>
             </div>
@@ -203,27 +203,27 @@
         $("#opAdministrativas").addClass("active");
 
         $("#opIdentificacao a").on("click", function () {
-            $("#formAdministrativas").attr('action', '{{ route('preencherPlano', 1) }}').submit();
+            $("#formAdministrativas").attr('action', '{{ route('salvarAdministrativas', 1) }}').submit();
         });
 
         $("#opAulas a").on("click", function () {
-            $("#formAdministrativas").attr('action', '{{ route('preencherPlano', 2) }}').submit();
+            $("#formAdministrativas").attr('action', '{{ route('salvarAdministrativas', 2) }}').submit();
         });
 
         $("#opEnsino a").on("click", function () {
-            $("#formAdministrativas").attr('action', '{{ route('preencherPlano', 3) }}').submit();
+            $("#formAdministrativas").attr('action', '{{ route('salvarAdministrativas', 3) }}').submit();
         });
 
         $("#opPesquisa a").on("click", function () {
-            $("#formAdministrativas").attr('action', '{{ route('preencherPlano', 4) }}').submit();
+            $("#formAdministrativas").attr('action', '{{ route('salvarAdministrativas', 4) }}').submit();
         });
 
         $("#opExtensao a").on("click", function () {
-            $("#formAdministrativas").attr('action', '{{ route('preencherPlano', 5) }}').submit();
+            $("#formAdministrativas").attr('action', '{{ route('salvarAdministrativas', 5) }}').submit();
         });
 
         $("#opAdministrativas a").on("click", function () {
-            $("#formAdministrativas").attr('action', '{{ route('preencherPlano', 6) }}').submit();
+            $("#formAdministrativas").attr('action', '{{ route('salvarAdministrativas', 6) }}').submit();
         });
     </script>
 

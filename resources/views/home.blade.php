@@ -81,8 +81,6 @@
             </div>
 
         </div>
-
-        @include('includes.alerts')
         
         <div class="row">
             <div class="col s12">
