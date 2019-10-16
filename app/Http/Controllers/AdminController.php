@@ -44,7 +44,6 @@ class AdminController extends Controller
             $wp->period_id= $periodo->id;
             $wp->save();
         }
-
         //return dd($usersList);
         return redirect()->route('listarPeriodos')->with('success', 'O período '.$request->period.' foi cadastrado');
     }
@@ -58,7 +57,6 @@ class AdminController extends Controller
         $period= Period::find($id);
         return view('admin.editarPeriodo')->with('periodo', $period);
     }
-
 
     public function salvarPeriodo($id, UpdatePeriodRequest $request){
         $periodo= Period::find($id);
