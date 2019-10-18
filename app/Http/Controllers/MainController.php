@@ -8,9 +8,6 @@ use App\User;
 use Request;
 
 
-use Illuminate\Support\Facades\DB;
-use Nexmo\Message\Shortcode\Alert;
-
 class MainController extends Controller
 {
 

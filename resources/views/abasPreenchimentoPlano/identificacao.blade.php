@@ -6,10 +6,8 @@
         <form class="col s12" id="formIdentificacao" method="post">
 
             @csrf
-            <input type="hidden" name="id" value="{{ $periodo->id }}">
-            @if(isset($identificacao))
+            <input type="hidden" name="plan_id" value="{{ $work_plan->id }}">
 
-            @endif
             <div class="row">
 
                 <div class="input-field col xl6 l6 m6 s12">

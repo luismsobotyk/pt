@@ -16,9 +16,9 @@ class CreateIdentificationsTable extends Migration
         Schema::create('identifications', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('plan_id');
-            $table->String('knowledge_area');
-            $table->String('teaching', 4);
-            $table->String('regime', 9);
+            $table->String('knowledge_area')->nullable(true);
+            $table->String('teaching', 4)->nullable(true);
+            $table->String('regime', 9)->nullable(true);
             $table->unsignedInteger('justification_id')->nullable(true);
             $table->foreign('justification_id')->references('id')->on('justifications');
             $table->foreign('plan_id')->references('id')->on('work_plans');
