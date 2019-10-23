@@ -18,7 +18,9 @@ class CreateResearchActivitiesTable extends Migration
             $table->unsignedInteger('plan_id');
             $table->String('activity');
             $table->double('workload');
+            $table->unsignedInteger('justifications_id')->nullable();
             $table->foreign('plan_id')->references('id')->on('work_plans');
+            $table->foreign('justifications_id')->references('id')->on('justifications');
             $table->timestamps();
         });
     }

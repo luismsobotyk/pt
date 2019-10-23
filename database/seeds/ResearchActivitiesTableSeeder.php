@@ -13,21 +13,34 @@ class ResearchActivitiesTableSeeder extends Seeder
     public function run()
     {
         ResearchActivity::create([
+            'id' => '1',
             'plan_id' => '1',
             'activity' => 'Análise e aprimoramento de um algoritmo de trade-off criptoanalítico',             
             'workload' => '3',           
-        ]);   
-
+        ]);
         ResearchActivity::create([
+            'id' => '2',
             'plan_id' => '1',
-            'activity' => 'Atividades de Pesquisa II',             
-            'workload' => '2',           
-        ]);   
-
+            'activity' => 'asdfgh 1',
+            'workload' => '3',
+        ]);
         ResearchActivity::create([
+            'id' => '3',
             'plan_id' => '1',
-            'activity' => 'Atividades de Pesquisa III',             
-            'workload' => '1',           
-        ]);   
+            'activity' => 'qwerty 2',
+            'workload' => '3',
+        ]);
+        ResearchActivity::create([
+            'id' => '4',
+            'plan_id' => '1',
+            'activity' => 'zxcvbn 3',
+            'workload' => '3',
+        ]);
+        ResearchActivity::create([
+            'id' => '5',
+            'plan_id' => '1',
+            'activity' => 'poiuyt 4',
+            'workload' => '3',
+        ]);
     }
 }

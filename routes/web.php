@@ -40,8 +40,8 @@ Route::get('/meusRelatorios/relatorio/{id}', 'MainController@verRelatorio')->nam
 Route::post('/preencherPlano/save', 'MainController@salvarPlano')->name('salvarPlano');
 Route::any('/preencherPlano/{numAba?}', 'MainController@preencherPlano')->name('preencherPlano');
 
-Route::post('/preencherRelatorio/save', 'MainController@salvarRelatorio')->name('salvarRelatorio');
-Route::any('/preencherRelatorio/{numAba?}', 'MainController@preencherRelatorio')->name('preencherRelatorio');
+Route::post('/preencherRelatorio/salvar', 'ReportFillController@salvarRelatorio')->name('salvarRelatorio');
+Route::get('/preencherRelatorio/{numAba?}', 'ReportFillController@preencherRelatorio')->name('preencherRelatorio');
 
 
 //--  Rotas para admin  --//

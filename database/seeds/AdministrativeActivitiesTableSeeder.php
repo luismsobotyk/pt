@@ -13,24 +13,32 @@ class AdministrativeActivitiesTableSeeder extends Seeder
     public function run()
     {
         AdministrativeActivity::create([
+            'id' => '1',
             'plan_id' => '1',
             'activity' => 'Coordenação de Curso',             
             'workload' => '6',  
-            'ordinance' => '01/2019',         
-        ]);   
-
+            'ordinance' => '02/2019'
+        ]);
         AdministrativeActivity::create([
+            'id' => '2',
             'plan_id' => '1',
-            'activity' => 'Comissão Permanente de Formatura do Campus Rolante',             
-            'workload' => '0.5',
-            'ordinance' => '02/2019',             
-        ]);   
-
+            'activity' => 'asdf 2',
+            'workload' => '6',
+            'ordinance' => '02/2019'
+        ]);
         AdministrativeActivity::create([
+            'id' => '3',
             'plan_id' => '1',
-            'activity' => 'NEAD',             
-            'workload' => '9',
-            'ordinance' => '03/2019',             
-        ]); 
+            'activity' => 'qwerty 3',
+            'workload' => '6',
+            'ordinance' => '02/2019'
+        ]);
+        AdministrativeActivity::create([
+            'id' => '4',
+            'plan_id' => '1',
+            'activity' => 'poiuyt 4',
+            'workload' => '6',
+            'ordinance' => '02/2019'
+        ]);
     }
 }

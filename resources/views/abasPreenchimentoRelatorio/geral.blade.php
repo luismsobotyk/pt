@@ -23,7 +23,7 @@
     </div>
 
     <br />
-    <form method="post" id="formGeral" class="col s12" action="#">
+    <form method="post" id="formRelatorio" class="col s12" action="#">
         @csrf
 
         <div class="row">
@@ -56,12 +56,10 @@
             </div>
         </div>
 
-
         <footer class="page-footer grey lighten-3 grey-text">
             <div class="row">
                 <div class="col s6 left-align">
-                    <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                            form="formGeral" formaction="{{ route('preencherRelatorio', 3) }}">Anterior
+                    <button class="btn waves-effect waves-light amber darken-3" onclick="submitFormRelatorio(5)">Anterior
                         <i class="material-icons left">arrow_back</i>
                     </button>
                 </div>
@@ -73,42 +71,6 @@
                 </div>
             </div>
         </footer>
-
     </form>
-
-
-    <script>
-        $(document).ready(function () {
-            $('.modal').modal();
-        });
-
-        // Alterando aba ativa no layout de preenchimento e setando funções onClick com os links corretos de cada aba.
-        $("#opGeral").addClass("active");
-
-        $("#opAulas a").on("click", function () {
-            $("#formGeral").attr('action', '{{ route('preencherRelatorio', 1) }}').submit();
-        });
-
-        $("#opEnsino a").on("click", function () {
-            $("#formGeral").attr('action', '{{ route('preencherRelatorio', 2) }}').submit();
-        });
-
-        $("#opPesquisa a").on("click", function () {
-            $("#formGeral").attr('action', '{{ route('preencherRelatorio', 3) }}').submit();
-        });
-
-        $("#opExtensao a").on("click", function () {
-            $("#formGeral").attr('action', '{{ route('preencherRelatorio', 4) }}').submit();
-        });
-
-        $("#opAdministrativas a").on("click", function () {
-            $("#formGeral").attr('action', '{{ route('preencherRelatorio', 5) }}').submit();
-        });
-
-        $("#opGeral a").on("click", function () {
-            $("#formGeral").attr('action', '{{ route('preencherRelatorio', 6) }}').submit();
-        });
-
-    </script>
 
 @endsection

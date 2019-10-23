@@ -35,7 +35,7 @@ class AdminController extends Controller
     }
 
     public function salvarNovoPeriodo(PeriodRequest $request){
-        $periodo= Period::create($request->all());
+        $periodo = Period::create($request->all());
         $usersList= User::select(['id', 'name'])->where('registerPlan', '=', 1)->get();
         foreach($usersList as $u){
             $wp= new WorkPlan;

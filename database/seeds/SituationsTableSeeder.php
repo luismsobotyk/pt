@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
 use App\Models\Situation;
 
 class  SituationsTableSeeder  extends Seeder
@@ -13,9 +12,9 @@ class  SituationsTableSeeder  extends Seeder
      */
     public function run()
     {
-        Situation::create(['type' => 'Pendente']);
-        Situation::create(['type' => 'Aguardando Alteração']);
-        Situation::create(['type' => 'Aguardando Aprovação']);
-        Situation::create(['type' => 'Aprovado']);
+        Situation::create(['id' => '1', 'type' => 'Pendente']);
+        Situation::create(['id' => '2', 'type' => 'Aguardando Alteração']);
+        Situation::create(['id' => '3', 'type' => 'Aguardando Aprovação']);
+        Situation::create(['id' => '4', 'type' => 'Aprovado']);
     }
 }

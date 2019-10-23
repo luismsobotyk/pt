@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Models\Identification;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,15 +13,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(UsersTableSeeder::class);
+        $this->call(SituationsTableSeeder::class);
+        $this->call(PeriodsTableSeeder::class);
+        $this->call(WorkPlansTableSeeder::class);
 
-        $this->call(SituationsTableSeeder::class); 
-        /*$this->call(WorkPlanTableSeeder::class);
         $this->call(IdentificationsTableSeeder::class);
         $this->call(ClassesTableSeeder::class);
         $this->call(TeachingActivitiesTableSeeder::class);
         $this->call(ResearchActivitiesTableSeeder::class);
         $this->call(ExtensionActivitiesTableSeeder::class);
-        $this->call(AdministrativeActivitiesTableSeeder::class);*/
+        $this->call(AdministrativeActivitiesTableSeeder::class);
         
     }
 }

@@ -13,21 +13,34 @@ class ExtensionActivitiesTableSeeder extends Seeder
     public function run()
     {
         ExtensionActivity::create([
+            'id' => '1',
             'plan_id' => '1',
-            'activity' => 'Atividades de Extensão I',             
-            'workload' => '2',           
-        ]);   
-
+            'activity' => 'Atividades de Extensão 1',
+            'workload' => '2'
+        ]);
         ExtensionActivity::create([
+            'id' => '2',
             'plan_id' => '1',
-            'activity' => 'Atividades de Extensão II',             
-            'workload' => '1',           
-        ]);   
-
+            'activity' => 'Atividades de Extensão 2',
+            'workload' => '2'
+        ]);
         ExtensionActivity::create([
+            'id' => '3',
             'plan_id' => '1',
-            'activity' => 'Atividades de Extensão III',             
-            'workload' => '3',           
-        ]);   
+            'activity' => 'Atividades de Extensão 3',
+            'workload' => '2'
+        ]);
+        ExtensionActivity::create([
+            'id' => '4',
+            'plan_id' => '1',
+            'activity' => 'Atividades de Extensão 4',
+            'workload' => '2'
+        ]);
+        ExtensionActivity::create([
+            'id' => '5',
+            'plan_id' => '1',
+            'activity' => 'Atividades de Extensão 5',
+            'workload' => '2'
+        ]);
     }
 }

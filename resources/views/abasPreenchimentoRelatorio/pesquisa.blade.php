@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <form method="post" id="formPesquisa" class="col s12" action="#">
+    <form method="post" id="formRelatorio" class="col s12" action="#">
         @csrf
         <div class="row" style="margin-top: 2%;">
 
@@ -30,72 +30,35 @@
                 <thead>
                 <tr>
                     <th>Atividade</th>
-                    <th>CH</th>
-                    <th>A Justificar</th>
+                    <th style="text-align: center">CH</th>
+                    <th style="text-align: center">A Justificar</th>
+                    <th>Justificativa</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                <tr>
-                    <td>Atividade A</td>
-                    <td>2</td>
-                    <td>
-                        <label>
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Atividade B</td>
-                    <td>1</td>
-                    <td>
-                        <label>
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Atividade C</td>
-                    <td>3</td>
-                    <td>
-                        <label>
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Atividade D</td>
-                    <td>2</td>
-                    <td>
-                        <label>
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Atividade E</td>
-                    <td>1</td>
-                    <td>
-                        <label>
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
-                    </td>
-                </tr>
+                @foreach($research_activities as $r_activity)
+                    <tr>
+                        <td>{{$r_activity->activity}}</td>
+                        <td style="text-align: center">{{$r_activity->workload}}</td>
+                        <td style="text-align: center">
+                            <label>
+                                <input type="checkbox" @if($r_activity->justifications_id > 0) checked @endif />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td>
+                            <textarea id="research_activity_justification[{{$r_activity->id}}]" name="research_activity_justification[{{$r_activity->id}}]" class="materialize-textarea" @if(is_null($r_activity->justifications_id)) disabled @endif rows="4" placeholder="Digite a justificativa">@if($r_activity->justifications_id > 0){{$r_activity->justification}}@endif</textarea>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
 
         <div class="row">
-            <h6>Justificativa:</h6>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                    <label for="textarea1">Textarea</label>
                     <div>
                         <span class="helper-text right" data-error="wrong" data-success="right">Não sabe como deve preencher? Clique <a
                                     class="modal-trigger" href="#modal1">aqui</a>.</span>
@@ -104,18 +67,15 @@
             </div>
         </div>
 
-
         <footer class="page-footer grey lighten-3 grey-text">
             <div class="row">
                 <div class="col s6 left-align">
-                    <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                            form="formPesquisa" formaction="{{ route('preencherRelatorio', 2) }}">Anterior
+                    <button class="btn waves-effect waves-light amber darken-3" onclick="submitFormRelatorio(2)">Anterior
                         <i class="material-icons left">arrow_back</i>
                     </button>
                 </div>
                 <div class="col s6 right-align">
-                    <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                            form="formPesquisa" formaction="{{ route('preencherRelatorio', 4) }}">Próxima
+                    <button class="btn waves-effect waves-light amber darken-3" onclick="submitFormRelatorio(4)">Próxima
                         <i class="material-icons right">arrow_forward</i>
                     </button>
                 </div>
@@ -123,40 +83,4 @@
         </footer>
 
     </form>
-
-
-    <script>
-        $(document).ready(function () {
-            $('.modal').modal();
-        });
-
-        // Alterando aba ativa no layout de preenchimento e setando funções onClick com os links corretos de cada aba.
-        $("#opPesquisa").addClass("active");
-
-        $("#opAulas a").on("click", function () {
-            $("#formPesquisa").attr('action', '{{ route('preencherRelatorio', 1) }}').submit();
-        });
-
-        $("#opEnsino a").on("click", function () {
-            $("#formPesquisa").attr('action', '{{ route('preencherRelatorio', 2) }}').submit();
-        });
-
-        $("#opPesquisa a").on("click", function () {
-            $("#formPesquisa").attr('action', '{{ route('preencherRelatorio', 3) }}').submit();
-        });
-
-        $("#opExtensao a").on("click", function () {
-            $("#formPesquisa").attr('action', '{{ route('preencherRelatorio', 4) }}').submit();
-        });
-
-        $("#opAdministrativas a").on("click", function () {
-            $("#formPesquisa").attr('action', '{{ route('preencherRelatorio', 5) }}').submit();
-        });
-
-        $("#opGeral a").on("click", function () {
-            $("#formPesquisa").attr('action', '{{ route('preencherRelatorio', 6) }}').submit();
-        });
-
-    </script>
-
 @endsection

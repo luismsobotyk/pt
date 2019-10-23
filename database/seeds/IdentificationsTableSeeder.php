@@ -15,10 +15,11 @@ class IdentificationsTableSeeder extends Seeder
     public function run()
     {
         Identification::create([
+            'id' => '1',
             'plan_id' => '1',
             'knowledge_area' => 'Informática Básica', 
             'teaching' => 'ES',
-            'regime' => '40',           
+            'regime' => '40'
         ]);
     }
 }

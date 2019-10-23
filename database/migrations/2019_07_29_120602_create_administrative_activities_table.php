@@ -19,7 +19,9 @@ class CreateAdministrativeActivitiesTable extends Migration
             $table->String('activity');
             $table->double('workload');
             $table->String('ordinance');
+            $table->unsignedInteger('justifications_id')->nullable();
             $table->foreign('plan_id')->references('id')->on('work_plans');
+            $table->foreign('justifications_id')->references('id')->on('justifications');
             $table->timestamps();
         });
     }

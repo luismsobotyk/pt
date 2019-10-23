@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Classes;
+use App\Models\Classe;
 use Illuminate\Database\Seeder;
 
 class ClassesTableSeeder extends Seeder
@@ -12,24 +12,47 @@ class ClassesTableSeeder extends Seeder
      */
     public function run()
     {
-        Classes::create([
+        Classe::create([
+            'id' => '1',
             'plan_id' => '1',
-            'discipline' => 'Informática Básica I', 
+            'discipline' => 'Informática Básica I',
             'course' => 'Técnico em informática',
-            'workload' => '2',           
+            'workload' => '2'
         ]);
-        Classes::create([
+        Classe::create([
+            'id' => '2',
             'plan_id' => '1',
-            'discipline' => 'Programação I', 
+            'discipline' => 'Redes I',
             'course' => 'Técnico em informática',
-            'workload' => '1',           
+            'workload' => '2'
         ]);
-
-        Classes::create([
+        Classe::create([
+            'id' => '3',
             'plan_id' => '1',
-            'discipline' => 'Bovinicultura', 
-            'course' => 'Tecnico em Agropecuária',
-            'workload' => '3',           
+            'discipline' => 'Algoritmos',
+            'course' => 'Técnico em informática',
+            'workload' => '2'
+        ]);
+        Classe::create([
+            'id' => '4',
+            'plan_id' => '1',
+            'discipline' => 'Banco de Dados',
+            'course' => 'Técnico em informática',
+            'workload' => '2'
+        ]);
+        Classe::create([
+            'id' => '5',
+            'plan_id' => '1',
+            'discipline' => 'Aplicativos Móveis',
+            'course' => 'Técnico em informática',
+            'workload' => '2'
+        ]);
+        Classe::create([
+            'id' => '6',
+            'plan_id' => '1',
+            'discipline' => 'Português',
+            'course' => 'Técnico em informática',
+            'workload' => '2'
         ]);
     }
 }

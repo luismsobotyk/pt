@@ -21,98 +21,44 @@
             <a href="#!" class="modal-close waves-effect btn-flat">ENTENDIDO</a>
         </div>
     </div>
-
-    <form method="post" id="formAulas" class="col s12" action="#">
+    <form method="post" id="formRelatorio" class="col s12">
         @csrf
         <div class="row" style="margin-top: 2%;">
-
             <table>
                 <thead>
                 <tr>
                     <th>Disciplina</th>
                     <th>Curso</th>
-                    <th>CH</th>
-                    <th>A Justificar</th>
+                    <th style="text-align: center">CH</th>
+                    <th style="text-align: center">A Justificar</th>
+                    <th>Justificativa</th>
                 </tr>
                 </thead>
 
                 <tbody>
+                @foreach($classes as $classe)
                 <tr>
-                    <td>Disciplina A</td>
-                    <td>Curso A</td>
-                    <td>2</td>
-                    <td>
+                    <td>{{$classe->discipline}}</td>
+                    <td>{{$classe->course}}</td>
+                    <td style="text-align: center">{{$classe->workload}}</td>
+                    <td style="text-align: center">
                         <label>
-                            <input type="checkbox" />
+                            <input type="checkbox" @if($classe->justifications_id > 0) checked @endif />
                             <span></span>
                         </label>
                     </td>
-                </tr>
-                <tr>
-                    <td>Disciplina B</td>
-                    <td>Curso B</td>
-                    <td>1</td>
                     <td>
-                        <label>
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
+                        <textarea id="classe_justification[{{$classe->id}}]" name="classe_justification[{{$classe->id}}]" class="materialize-textarea" @if(is_null($classe->justifications_id)) disabled @endif rows="4" placeholder="Digite a justificativa">@if($classe->justifications_id > 0){{$classe->justification}}@endif</textarea>
                     </td>
                 </tr>
-                <tr>
-                    <td>Disciplina C</td>
-                    <td>Curso C</td>
-                    <td>3</td>
-                    <td>
-                        <label>
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Disciplina D</td>
-                    <td>Curso D</td>
-                    <td>2</td>
-                    <td>
-                        <label>
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Disciplina E</td>
-                    <td>Curso E</td>
-                    <td>1</td>
-                    <td>
-                        <label>
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Disciplina F</td>
-                    <td>Curso F</td>
-                    <td>3</td>
-                    <td>
-                        <label>
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
-                    </td>
-                </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
 
         <div class="row">
-            <h6>Justificativa:</h6>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                    <label for="textarea1">Textarea</label>
                     <div>
                         <span class="helper-text right" data-error="wrong" data-success="right">Não sabe como deve preencher? Clique <a
                                     class="modal-trigger" href="#modal1">aqui</a>.</span>
@@ -120,7 +66,6 @@
                 </div>
             </div>
         </div>
-
 
         <footer class="page-footer grey lighten-3 grey-text">
             <div class="row">
@@ -131,8 +76,7 @@
                     </button-->
                 </div>
                 <div class="col s6 right-align">
-                    <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                            form="formAulas" formaction="{{ route('preencherRelatorio', 2) }}">Próxima
+                    <button class="btn waves-effect waves-light amber darken-3" onclick="submitFormRelatorio(2)">Próxima
                         <i class="material-icons right">arrow_forward</i>
                     </button>
                 </div>
@@ -140,40 +84,4 @@
         </footer>
 
     </form>
-
-
-    <script>
-        $(document).ready(function () {
-            $('.modal').modal();
-        });
-
-        // Alterando aba ativa no layout de preenchimento e setando funções onClick com os links corretos de cada aba.
-        $("#opAulas").addClass("active");
-
-        $("#opAulas a").on("click", function () {
-            $("#formAulas").attr('action', '{{ route('preencherRelatorio', 1) }}').submit();
-        });
-
-        $("#opEnsino a").on("click", function () {
-            $("#formAulas").attr('action', '{{ route('preencherRelatorio', 2) }}').submit();
-        });
-
-        $("#opPesquisa a").on("click", function () {
-            $("#formAulas").attr('action', '{{ route('preencherRelatorio', 3) }}').submit();
-        });
-
-        $("#opExtensao a").on("click", function () {
-            $("#formAulas").attr('action', '{{ route('preencherRelatorio', 4) }}').submit();
-        });
-
-        $("#opAdministrativas a").on("click", function () {
-            $("#formAulas").attr('action', '{{ route('preencherRelatorio', 5) }}').submit();
-        });
-
-        $("#opGeral a").on("click", function () {
-            $("#formAulas").attr('action', '{{ route('preencherRelatorio', 6) }}').submit();
-        });
-
-    </script>
-
 @endsection

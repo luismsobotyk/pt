@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use App\User;
 use App\Models\WorkPlan;
 
-class WorkPlanTableSeeder extends Seeder
+class WorkPlansTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,43 +12,16 @@ class WorkPlanTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    
+
     {
         WorkPlan::create([
+            'id' => '1',
             'user_id' => '1',
-            'situation_id' => '1', 
-            'opening_date' => '2019-08-21',
-            'closing_date' => '2019-12-12',
-            'send_date' => '2019-08-21',
-            'approval_date' => '2019-08-21',
-        ]);
-        WorkPlan::create([
-            'user_id' => '1',
-            'situation_id' => '2', 
-            'opening_date' => '2019-08-21',
-            'closing_date' => '2019-12-12',
-            'send_date' => '2019-08-21',
-            'approval_date' => '2019-08-21',
-        ]);
-
-        WorkPlan::create([
-            'user_id' => '1',
-            'situation_id' => '3', 
-            'opening_date' => '2019-08-21',
-            'closing_date' => '2019-12-12',
-            'send_date' => '2019-08-21',
-            'approval_date' => '2019-08-21',
-        ]);
-
-        WorkPlan::create([
-            'user_id' => '2',
-            'situation_id' => '1', 
-            'opening_date' => '2019-08-21',
-            'closing_date' => '2019-12-12',
-            'send_date' => '2019-08-21',
-            'approval_date' => '2019-08-21',
+            'situation_id' => '1',
+            'period_id' => '1',
+            'send_date' => '2019-10-15',
+            'approval_date' => '2019-10-20'
         ]);
     }
-
     //select em user insert to id (and resgister_plans)WorkPlan
 }
