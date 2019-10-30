@@ -28,10 +28,10 @@
 
         <div class="row">
             <div class="col s12 m7 l7 xl7">
-                Você preencheu <b>40 horas</b> totais. Informe quantas horas você cumpriu:
+                Você preencheu <b>{{$identification->regime}} horas</b> totais. Informe quantas horas você cumpriu:
             </div>
             <div class="col s12 m5 l5 xl5">
-                <input type="number" id="workloadFulfilled" name="workloadFulfilled" min="0" max="40">
+                <input type="number" id="fulfilled_workload" name="fulfilled_workload" min="0" max="40">
                 <label for="workloadFulfilled">Carga Horária Cumprida</label>
             </div>
         </div>
@@ -46,8 +46,10 @@
             <h6>Observações sobre a Carga Horária Geral:</h6>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                    <label for="textarea1"></label>
+                    <input type="hidden" name="plan_id" id="plan_id" value="{{$identification->plan_id}}">
+                    <input type="hidden" name="period_id" id="period_id" value="{{$period->id}}">
+                    <textarea id="report_justification" name="report_justification" class="materialize-textarea">@if(count($report) > 0 && $report->justifications_id > 0){{$report->justification}}@endif</textarea>
+                    <label for="report_justification"></label>
                     <div>
                         <span class="helper-text right" data-error="wrong" data-success="right">Não sabe como deve preencher? Clique <a
                                     class="modal-trigger" href="#modal1">aqui</a>.</span>
@@ -64,8 +66,7 @@
                     </button>
                 </div>
                 <div class="col s6 right-align">
-                    <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                            form="formGeral" formaction="{{ route('salvarRelatorio') }}">Concluir e Enviar
+                    <button class="btn waves-effect waves-light amber darken-3" onclick="submitFormRelatorio()">Concluir e Enviar
                         <i class="material-icons right">save</i>
                     </button>
                 </div>
