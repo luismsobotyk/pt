@@ -71,7 +71,7 @@ class ReportFillController extends Controller
                 ->leftjoin('justifications', 'classes.justifications_id', '=', 'justifications.id')
                 ->orderBy('discipline', 'ASC')
                 ->get(['justifications.justification AS justification', 'classes.*']);
-            dd($classes);
+//            dd($classes);
             return view('abasPreenchimentoRelatorio.aulas')->with('classes', $classes);
         }
     }
