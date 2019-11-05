@@ -94,7 +94,6 @@
 
 </head>
 <body>
-
 <!-- Navbar -->
 <div class="navbar-fixed">
     <nav>

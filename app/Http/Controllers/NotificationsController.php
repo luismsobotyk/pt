@@ -4,6 +4,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Notification;
+
 class NotificationsController extends Controller
 {
     /**
@@ -20,15 +22,15 @@ class NotificationsController extends Controller
     private static $NotificationsController;
 
 
-    final private function __construct()
+    protected function __construct()
     {
     }
 
-    final private function __clone()
+    protected function __clone()
     {
     }
 
-    final private function __wakeup()
+    protected function __wakeup()
     {
     }
 
@@ -44,20 +46,30 @@ class NotificationsController extends Controller
      * @param $to - usuário que irá receber a notificação
      * @param $message - mensagem da notificação
      * @param null $from - usuário que esta enviando a notificação, se null a notificação foi gerada pelo sistema
+     * @return Notification
      */
-    public static function newNotification($to, $message, $from = null)
+    public function newNotification($to, $message, $from = null) : Notification
     {
-
+        $notif = new Notification;
+        $notif->from_user_id = $from;
+        $notif->to_user_id = $to;
+        $notif->message = $message;
+        $notif->read = false;
+        $notif->save();
+        return $notif;
     }
 
-    public static function readNotifications()
+    public function readNotifications()
     {
-
+        return Notification::all();
     }
 
-    public static function setNotificationAsRead($notification_id)
+    public function setNotificationAsRead($notification_id) : Notification
     {
-
+        $notif = Notification::find($notification_id);
+        $notif->read = true;
+        $notif->save();
+        return $notif;
     }
 
 }

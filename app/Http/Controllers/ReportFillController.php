@@ -17,12 +17,8 @@ use Illuminate\Http\Request;
 use App\Models\Classe;
 use PhpParser\Node\Expr\Cast\Object_;
 
-class ReportFillController extends Controller
+class ReportFillController extends BaseController
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function preencherRelatorio($numAba = null)
     {
