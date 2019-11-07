@@ -8,7 +8,6 @@
             margin-top: 10px;
         }
     </style>
-
     <div class="container" style="margin-top: 6rem;">
         <div class="row">
 

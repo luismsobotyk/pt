@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     public function listarUsuarios(){
         return view('admin.listarUsuarios');

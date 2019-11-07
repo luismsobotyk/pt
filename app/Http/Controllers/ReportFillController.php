@@ -17,8 +17,12 @@ use Illuminate\Http\Request;
 use App\Models\Classe;
 use PhpParser\Node\Expr\Cast\Object_;
 
-class ReportFillController extends BaseController
+class ReportFillController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     public function preencherRelatorio($numAba = null)
     {
@@ -32,42 +36,41 @@ class ReportFillController extends BaseController
 
 
         if ($numAba == 2) {
-            $teaching_activities = TeachingActivity::where('plan_id', '=', $workPlan->id)
+            $teaching_activities = is_null($workPlan) ? null : TeachingActivity::where('plan_id', '=', $workPlan->id)
                 ->leftjoin('justifications', 'teaching_activities.justifications_id', '=', 'justifications.id')
                 ->orderBy('activity', 'ASC')
                 ->get(['justifications.justification AS justification', 'teaching_activities.*']);
             return view('abasPreenchimentoRelatorio.ensino')->with('teaching_activities', $teaching_activities);
         } else if ($numAba == 3) {
-            $research_activities = ResearchActivity::where('plan_id', '=', $workPlan->id)
+            $research_activities = is_null($workPlan) ? null : ResearchActivity::where('plan_id', '=', $workPlan->id)
                 ->leftjoin('justifications', 'research_activities.justifications_id', '=', 'justifications.id')
                 ->orderBy('activity', 'ASC')
                 ->get(['justifications.justification AS justification', 'research_activities.*']);
             return view('abasPreenchimentoRelatorio.pesquisa')->with('research_activities', $research_activities);
         } else if ($numAba == 4) {
-            $extension_activities = ExtensionActivity::where('plan_id', '=', $workPlan->id)
+            $extension_activities = is_null($workPlan) ? null : ExtensionActivity::where('plan_id', '=', $workPlan->id)
                 ->leftjoin('justifications', 'extension_activities.justifications_id', '=', 'justifications.id')
                 ->orderBy('activity', 'ASC')
                 ->get(['justifications.justification AS justification', 'extension_activities.*']);
             return view('abasPreenchimentoRelatorio.extensao')->with('extension_activities', $extension_activities);
         } else if ($numAba == 5) {
-            $administrative_activities = AdministrativeActivity::where('plan_id', '=', $workPlan->id)
+            $administrative_activities = is_null($workPlan) ? null : AdministrativeActivity::where('plan_id', '=', $workPlan->id)
                 ->leftjoin('justifications', 'administrative_activities.justifications_id', '=', 'justifications.id')
                 ->orderBy('activity', 'ASC')
                 ->get(['justifications.justification AS justification', 'administrative_activities.*']);
             return view('abasPreenchimentoRelatorio.administrativas')->with('administrative_activities', $administrative_activities);
         } else if ($numAba == 6) {
-            $period = Period::find($workPlan->period_id);
-            $identification = Identification::where('plan_id', $workPlan->id)->get()->first();
-            $report = Report::where('plan_id', '=', $workPlan->id)
+            $period = is_null($workPlan) ? null : Period::find($workPlan->period_id);
+            $identification = is_null($workPlan) ? null : Identification::where('plan_id', $workPlan->id)->get()->first();
+            $report = is_null($workPlan) ? null : Report::where('plan_id', '=', $workPlan->id)
                 ->leftjoin('justifications', 'reports.justifications_id', '=', 'justifications.id')
                 ->get(['justifications.justification AS justification', 'reports.*']);
             return view('abasPreenchimentoRelatorio.geral')->with('report', $report)->with('identification', $identification)->with('period', $period);
         } else {
-            $classes = Classe::where('plan_id', '=', $workPlan->id)
+            $classes = is_null($workPlan) ? null : Classe::where('plan_id', '=', $workPlan->id)
                 ->leftjoin('justifications', 'classes.justifications_id', '=', 'justifications.id')
                 ->orderBy('discipline', 'ASC')
                 ->get(['justifications.justification AS justification', 'classes.*']);
-//            dd($classes);
             return view('abasPreenchimentoRelatorio.aulas')->with('classes', $classes);
         }
     }

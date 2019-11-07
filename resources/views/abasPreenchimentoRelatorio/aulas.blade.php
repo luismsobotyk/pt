@@ -36,7 +36,7 @@
                 </thead>
 
                 <tbody>
-                @foreach($classes as $classe)
+                @if (!is_null($classes) && count($classes) > 0) @foreach($classes as $classe)
                 <tr>
                     <td>{{$classe->discipline}}</td>
                     <td>{{$classe->course}}</td>
@@ -52,6 +52,13 @@
                     </td>
                 </tr>
                 @endforeach
+                @else
+                <tr>
+                    <td colspan="5">
+                        Não existem dados a serem exibidos!
+                    </td>
+                </tr>
+                @endif
                 </tbody>
             </table>
         </div>

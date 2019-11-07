@@ -37,7 +37,7 @@
                 </thead>
 
                 <tbody>
-                @foreach($extension_activities as $e_activity)
+                @if (!is_null($extension_activities) && count($extension_activities) > 0) @foreach($extension_activities as $e_activity)
                     <tr>
                         <td>{{$e_activity->activity}}</td>
                         <td style="text-align: center">{{$e_activity->workload}}</td>
@@ -52,6 +52,14 @@
                         </td>
                     </tr>
                 @endforeach
+                @else
+                    <tr>
+                        <td colspan="4">
+                            Não existem dados a serem exibidos!
+                        </td>
+                    </tr>
+                @endif
+                </tbody>
                 </tbody>
             </table>
         </div>

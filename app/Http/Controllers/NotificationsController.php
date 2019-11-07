@@ -8,22 +8,14 @@ use App\Models\Notification;
 
 class NotificationsController extends Controller
 {
-    /**
-     * UC 01 - Classe Genérica para Envio / Recebimento de Notificações
-     * 1) A classe será a unica responsável por gravar novas notificações na tabela a ser criada no banco;
-     * 2) Deverá realizar de maneira automática a verificação de novas mensagens destinadas ao usuário atual e exibi-las em quaisquer rotas que estiver sendo acessada;
-     * 3) Deverá apresentar um botão de "OK" na notificação para confirmar que o usuário realmente leu a notificação, antes de marcá-la como lida no banco de dados;
-     * 4) Seus métodos deverão ser os mesmos para qualquer controler que a instancie.
-     *
-     * Usei o padrão singleton para caso formos utilizar o php como serviço e websocket para notificações em tempo real futuramente.
-     *
-     */
 
     private static $NotificationsController;
-
+    private static $notifications;
 
     protected function __construct()
     {
+        parent::__construct();
+        self::$notifications = $this->readNotifications();
     }
 
     protected function __clone()
@@ -43,9 +35,9 @@ class NotificationsController extends Controller
     }
 
     /**
-     * @param $to - usuário que irá receber a notificação
-     * @param $message - mensagem da notificação
-     * @param null $from - usuário que esta enviando a notificação, se null a notificação foi gerada pelo sistema
+     * @param $to
+     * @param $message
+     * @param null $from
      * @return Notification
      */
     public function newNotification($to, $message, $from = null) : Notification
@@ -59,9 +51,19 @@ class NotificationsController extends Controller
         return $notif;
     }
 
-    public function readNotifications()
+    /**
+     * Recupera as notificações e as disponibiliza para todas as views
+     * @return Notification[]|\Illuminate\Database\Eloquent\Collection
+     */
+    protected function readNotifications()
     {
-        return Notification::all();
+        $ntfs = Notification::all();
+        view()->share('notifications', $ntfs);
+        return $ntfs;
+    }
+
+    public function getNotification(){
+        return self::$notifications;
     }
 
     public function setNotificationAsRead($notification_id) : Notification
