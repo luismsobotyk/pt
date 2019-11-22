@@ -2,10 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Controllers\NotificationsController;
 use Closure;
 
-class NotificationsMiddleware
+class UserRoot
 {
     /**
      * Handle an incoming request.
@@ -16,7 +15,10 @@ class NotificationsMiddleware
      */
     public function handle($request, Closure $next)
     {
-        NotificationsController::getInstance();
-        return $next($request);
+        if ($request->user()->email == env('USER_ROOT_MAIL')) {
+            return $next($request);
+        }else{
+            return redirect('home');
+        }
     }
 }

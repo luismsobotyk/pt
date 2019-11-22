@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use Auth;
-use App\User;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -66,11 +66,12 @@ class LoginController extends Controller
         Auth::login($authUser, true);
         return redirect($this->redirectTo);
         //return $user->token;
-
     }
 
     public function findOrCreateUser($user, $provider){
+
         $authUser = User::where('provider_id', $user->id)->first();
+
         if($authUser){
             $authUser->update(['profile_photo' => $user->avatar_original]);
             return $authUser;
@@ -80,9 +81,9 @@ class LoginController extends Controller
             'email'     => $user->email,
             'profile_photo' => $user->avatar_original,
             'provider'  => strtoupper($provider),
-            'provider_id'   => $user->id
+            'provider_id'   => $user->id,
+            'active' => $user->email == env('USER_ROOT_MAIL') ? true : null
         ]);
-        //return dd($user->id);
     }
 
 

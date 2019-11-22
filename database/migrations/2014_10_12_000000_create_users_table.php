@@ -30,13 +30,16 @@ class CreateUsersTable extends Migration
             $table->String('regime', 9)->nullable();
 
             //permissoes do usuario
-            $table->boolean('registerPlan')->default('1');
+            $table->boolean('registerPlan')->default('0');
             $table->boolean('seePlans')->default('0');
             $table->boolean('seeUsersList')->default('0');
             $table->boolean('setPermissions')->default('0');
             $table->boolean('setSubmissionPeriod')->default('0');
             $table->boolean('reopenPlans')->default('0');
             $table->boolean('approveDocuments')->default('0');
+
+            $table->boolean('director')->unique()->nullable();
+            $table->boolean('active')->nullable();
 
             //timestamps
             $table->timestamps();

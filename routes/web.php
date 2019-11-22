@@ -19,21 +19,32 @@ Route::get('/', function () {
 Auth::routes();
 
 /**
- * ROTAS QUE PODEM SER ACESSADAS SEM AUTENTICAÇÃO
+ * ROTAS PARA AUTENTICAÇÃO
  */
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 /**
  * ROTAS QUE PRECISAM DE AUTENTICAÇÃO PARA SEREM ACESSADAS
- * Se for adicionar uma rota que não precise de autenticação coloque-a fora deste grupo de rotas
  */
-Route::group(['middleware' => ['auth', 'notifications']], function () {
+
+//APENAS ROOT
+Route::group(['middleware' => ['auth', 'root']], function (){
+    Route::get('root', 'RootController@index')->name('root');
+    Route::post('root/setDirector', 'RootController@setDirector')->name('setdirector');
+});
+
+//NOVO USUÁRIO
+Route::group(['middleware' => ['auth', 'notroot']], function (){
+    Route::get('myProfile', 'ProfileController@myProfile')->name('myProfile');
+    Route::get('myProfile/edit', 'ProfileController@editMyProfile')->name('editarMinhasInfos');
+    Route::post('myProfile/edit/save', 'ProfileController@saveEditedProfileInfos')->name('salvarMinhasInfosEditadas');
+});
+
+//DEMAIS ROTAS PARA USUÁRIOS AUTENTICADOS
+Route::group(['middleware' => ['auth', 'notroot', 'useractive']], function () {
     //-- Rotas para usuário comum --//
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('myProfile', 'MainController@myProfile')->name('myProfile');
-    Route::get('myProfile/edit', 'MainController@editMyProfile')->name('editarMinhasInfos');
-    Route::post('myProfile/edit/save', 'MainController@saveEditedProfileInfos')->name('salvarMinhasInfosEditadas');
     Route::get('notifications', 'MainController@verNotificacoes')->name('notificacoes');
     Route::get('/meusPlanos', 'MainController@listarPlanos')->name('meusPlanos');
     Route::get('/meusPlanos/plano/{id}', 'MainController@verPlano')->name('verPlano');

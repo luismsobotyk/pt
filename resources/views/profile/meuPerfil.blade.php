@@ -11,9 +11,17 @@
 
                 <br/>
 
-                <h5>{{ Auth::user()->name }}</h5>
+                <h5>{{ Auth::user()->name }} @if(Auth::user()->director) (Diretor) @endif</h5>
                 <h7>{{ Auth::user()->email }}</h7>
 
+                <br/>
+                <br/>
+                @if(Auth::user()->active == false)
+                <button class="btn waves-effect waves-light amber darken-3">
+                    <i class="material-icons left">verified_user</i>
+                    Solicitar Liberação de Acesso
+                </button>
+                @endif
                 <br/>
                 <br/>
 
@@ -21,8 +29,6 @@
 
                 <table>
                     <tbody>
-
-
                     <tr>
                         @if(is_null(Auth::user()->knowledge_area))
                             <td>Área de Conhecimento: <b>Não Informado</b></td>
@@ -54,17 +60,18 @@
             </div>
         </div>
 
-        <br />
+        <br/>
 
         <div class="row">
             <div class="col s6 offset-s3 right-align">
-                <a class="btn-floating tooltipped amber darken-3" data-position="bottom" data-tooltip="Editar" href="{{ route('editarMinhasInfos') }}"><i class="material-icons">edit</i></a>
+                <a class="btn-floating tooltipped amber darken-3" data-position="bottom" data-tooltip="Editar"
+                   href="{{ route('editarMinhasInfos') }}"><i class="material-icons">edit</i></a>
             </div>
         </div>
     </div>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('.tooltipped').tooltip();
         });
     </script>

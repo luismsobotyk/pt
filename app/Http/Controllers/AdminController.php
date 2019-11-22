@@ -6,7 +6,7 @@ use App\Http\Requests\PeriodRequest;
 use App\Http\Requests\UpdatePeriodRequest;
 use App\Models\Period;
 use App\Models\WorkPlan;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,7 +18,8 @@ class AdminController extends Controller
     }
 
     public function listarUsuarios(){
-        return view('admin.listarUsuarios');
+        $users = User::where('email', '!=', env('USER_ROOT_MAIL'))->get();
+        return view('admin.listarUsuarios')->with('users', $users);
     }
 
     public function verUsuario(){

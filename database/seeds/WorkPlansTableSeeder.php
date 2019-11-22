@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
 use App\Models\WorkPlan;
 
 class WorkPlansTableSeeder extends Seeder

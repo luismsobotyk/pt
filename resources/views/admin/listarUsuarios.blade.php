@@ -7,59 +7,28 @@
         <div class="row left">
             <h5>Usuários: </h5>
         </div>
-
+        <input type="text" id="myInput" onkeyup="usersFilter()" placeholder="Digite o nome ou email do usuário..."
+               title="Digite o nome ou email do usuário...">
         <table class="highlight responsive-table">
-
             <thead>
             <tr>
-                <th>
-                    <label>
-                        <input type="checkbox"/>
-                        <span></span>
-                    </label>
-                </th>
                 <th>Nome</th>
+                <th>Email</th>
                 <th>Ultimo Login</th>
                 <th>Ações</th>
             </tr>
             </thead>
 
-            <tbody>
+            <tbody id="user_list">
+            @foreach($users as $user)
             <tr>
-                <td>
-                    <label>
-                        <input type="checkbox"/>
-                        <span></span>
-                    </label>
-                </td>
-                <td>Alvin</td>
-                <td>24/10/2019</td>
-                <td><a href="{{ route('verUsuario', 1) }}" class="black-text tooltipped" data-position="left" data-tooltip="Ver informações do Usuário"><i class="material-icons">info_outline</i></a>
-                    <a href="{{ route('editarPermissao', 1) }}" class="black-text tooltipped" data-position="right" data-tooltip="Implantar/Editar permissões do Usuário"><i class="material-icons padding-1-left">settings</i></a></td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->email}}</td>
+                <td>XX/XX/XXXX</td>
+                <td><a href="{{ route('verUsuario', $user->id) }}" class="black-text tooltipped" data-position="left" data-tooltip="Ver informações do Usuário"><i class="material-icons">info_outline</i></a>
+                    <a href="{{ route('editarPermissao', $user->id) }}" class="black-text tooltipped" data-position="right" data-tooltip="Implantar/Editar permissões do Usuário"><i class="material-icons padding-1-left">settings</i></a></td>
             </tr>
-            <tr>
-                <td>
-                    <label>
-                        <input type="checkbox"/>
-                        <span></span>
-                    </label>
-                </td>
-                <td>Alan</td>
-                <td>02/05/2018</td>
-                <td><a href="{{ route('verUsuario', 1) }}" class="black-text tooltipped" data-position="left" data-tooltip="Ver informações do Usuário"><i class="material-icons">info_outline</i></a>
-                    <a href="{{ route('editarPermissao', 1) }}" class="black-text tooltipped" data-position="right" data-tooltip="Implantar/Editar permissões do Usuário"><i class="material-icons padding-1-left">settings</i></a></td>
-            <tr>
-                <td>
-                    <label>
-                        <input type="checkbox"/>
-                        <span></span>
-                    </label>
-                </td>
-                <td>Jonathan</td>
-                <td>Nunca Acessou</td>
-                <td><a href="{{ route('verUsuario', 1) }}" class="black-text tooltipped" data-position="left" data-tooltip="Ver informações do Usuário"><i class="material-icons">info_outline</i></a>
-                    <a href="{{ route('editarPermissao', 1) }}" class="black-text tooltipped" data-position="right" data-tooltip="Implantar/Editar permissões do Usuário"><i class="material-icons padding-1-left">settings</i></a></td>
-            </tr>
+            @endforeach
             </tbody>
 
         </table>
@@ -68,5 +37,21 @@
         $(document).ready(function(){
             $('.tooltipped').tooltip();
         });
+
+        function usersFilter() {
+            var input, filter, lista, tr, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            lista = document.getElementById("user_list");
+            tr = lista.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                txtValue = tr[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
     </script>
 @endsection

@@ -1,0 +1,5 @@
+ao descomentar a extensão Curl no php.ini:
+baixe o arquivo http://curl.haxx.se/ca/cacert.pem
+e o salve em C:\php\certificados\cacert.pem
+no arquivo php.ini descomente ;curl.cainfo e altere a linha para:
+curl.cainfo = "C:\php\certificados\cacert.pem"

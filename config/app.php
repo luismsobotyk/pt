@@ -172,7 +172,7 @@ return [
 
         Skydiver\LaravelMaterializeCSS\MaterializeCSSServiceProvider::class,
 
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
