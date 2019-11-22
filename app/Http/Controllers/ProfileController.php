@@ -43,7 +43,7 @@ class ProfileController extends Controller
 
             $user->save();
 
-            return redirect()->route('editarMinhasInfos')->with('success', 'Seus dados foram atualizados.');
+            return redirect()->route('myProfile')->with('success', 'Seus dados foram atualizados.');
         }catch(Exception $e){
             return redirect()->route('editarMinhasInfos')->with('error', 'Houve um problema ao salvar atualizar seus dados, contate o administrador.');
         }

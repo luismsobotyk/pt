@@ -20,7 +20,7 @@
             </div>
             <input type="text" id="myInput" onkeyup="usersFilter()" placeholder="Digite o nome ou email do usuário..."
                    title="Digite o nome ou email do usuário...">
-            <table class="highlight responsive-table">
+            <table class="highlight table">
                 <thead>
                 <tr>
                     <th></th>
