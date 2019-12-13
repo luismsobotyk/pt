@@ -1,0 +1,8 @@
+## LIMPA TODOS OS CACHES ##
+php artisan optimize:clear & composer dump-autoload
+## FIM ##
+
+
+## LIBERA ACESSO NA REDE ##
+php artisan serve --host=0.0.0.0
+## FIM ##
