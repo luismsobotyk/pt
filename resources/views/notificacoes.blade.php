@@ -1,48 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        .notifications td a{
-            color: #111111;
-        }
-        .notifications td:hover{
-            background-color: #bdbdbd;
-        }
-    </style>
     <div class="container" style="margin-top: 7rem;">
-
         <table class="notifications">
             <tbody>
-            <tr>
-                <td><a href="#">Notificação A</a></td>
+            @foreach($notifications as $notification)
+                <tr>
+                @switch($notification->type)
+                    @case('App\Notifications\NotifyNewUser')
+                        <td style="@if(is_null($notification->read_at)) font-weight: bold @endif">
+                            <a href="{{route('verUsuario', $notification->data['user']['id'])}}">{{$notification->created_at->format('d/m/Y h:m')}} - Novo usuário cadastrado no sistema: {{$notification->data['user']['name']}}</a>
+                        </td>
+                        @break;
+                    @default:
+                        <td>tipo da notificação não identificado</td>
+                @endswitch
             </tr>
-            <tr>
-                <td><a href="#">Notificação B</a></td>
-            </tr>
-            <tr>
-                <td><a href="#">Notificação C</a></td>
-            </tr>
-            <tr>
-                <td><a href="#">Notificação D</a></td>
-            </tr>
-            <tr>
-                <td><a href="#">Notificação E</a></td>
-            </tr>
-            <tr>
-                <td><a href="#">Notificação F</a></td>
-            </tr>
-            <tr>
-                <td><a href="#">Notificação G</a></td>
-            </tr>
-            <tr>
-                <td><a href="#">Notificação H</a></td>
-            </tr>
-            <tr>
-                <td><a href="#">Notificação I</a></td>
-            </tr>
-            <tr>
-                <td><a href="#">Notificação J</a></td>
-            </tr>
+            @endforeach
             </tbody>
         </table>
     </div>

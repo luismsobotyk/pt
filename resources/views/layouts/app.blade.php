@@ -10,13 +10,28 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <link rel="stylesheet" charset="utf-8" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" charset="utf-8" href={{ asset('materialize-css/css/materialize.min.css') }}>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
-    <script type="text/javascript" src={{ asset('materialize-css/js/materialize.min.js') }}></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <style type="text/css">
+
+        .notifications td a{
+            color: #111111;
+        }
+        .notifications td:hover{
+            background-color: #bdbdbd;
+        }
+
+        .font4-margin10 {
+            font-size: 4em;
+            margin-top: 10px;
+        }
+
         body, html {
             background-color: #ecf0f1;
             width: 100%;
@@ -107,76 +122,62 @@
 
 </head>
 <body>
-<!-- Navbar -->
-<div class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a title="Sair" href="{{ route('logout') }}"
-                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                                class="material-icons">power_settings_new</i></a></li>
-                <li><a href="{{ route('myProfile') }}">{{ Auth::user()->name }}
-                        <img class="circle responsive-img" src="{{Auth::user()->profile_photo}}"
-                             style="margin-left: 1rem; width: 2rem; height: 2rem; vertical-align:middle; text-align:center; margin-bottom: 2px;"></a>
-                </li>
-            </ul>
-
-            @if(Auth::user()->director)
-                <ul id="nav-mobile" class="brand-logo center hide-on-med-and-down">
-                    <li>
-                        <a href="{{ route('listarPeriodos') }}">Períodos</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('listarPlanos') }}">Listar Planos</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('listarRelatorios') }}">Listar Relatórios</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('listarUsuarios') }}">Ver Usuários</a>
+<div id="app">
+    <!-- Navbar -->
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a title="Sair" href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                    class="material-icons">power_settings_new</i></a></li>
+                    <li><a href="{{ route('myProfile') }}">{{ Auth::user()->name }}
+                            <img class="circle responsive-img" src="{{Auth::user()->profile_photo}}"
+                                 style="margin-left: 1rem; width: 2rem; height: 2rem; vertical-align:middle; text-align:center; margin-bottom: 2px;"></a>
                     </li>
                 </ul>
-            @endif
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                  style="display: none;">
-                @csrf
-            </form>
+                @if(Auth::user()->director)
+                    <ul id="nav-mobile" class="brand-logo center hide-on-med-and-down">
+                        <li>
+                            <a href="{{ route('listarPeriodos') }}">Períodos</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('listarPlanos') }}">Listar Planos</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('listarRelatorios') }}">Listar Relatórios</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('listarUsuarios') }}">Ver Usuários</a>
+                        </li>
+                    </ul>
+                @endif
 
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                      style="display: none;">
+                    @csrf
+                </form>
 
-                <!-- Se tiver notificação não lida >
-                li><a class="dropdown-trigger" data-target="notification" href="#notifications">Notificações<i class="material-icons left">notifications_active</i></a></li>
-
-                Se não tiver notificações não lidas -->
-
-                <li><a class="dropdown-trigger" data-target="notifications" href="#notifications">Notificações<i
-                                class="material-icons left">notifications</i></a></li>
-
-
-                <ul id='notifications' class='dropdown-content blue-grey darken-4'>
-                    <li><a href="#!" class="white-text hover-black">Seu plano 2019/1 foi rejeitado por Fulano de Tal,
-                            revise-o.<span class="new badge right amber darken-3"></span></a></li>
-                    <li><a href="#!" class="white-text hover-black">Seu plano 2018/2 foi aprovado.</a></li>
-                    <li><a href="#!" class="white-text hover-black">Seu plano 2018/1 foi aprovado.</a></li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li><a href="{{ route('notificacoes') }}" class="center white-text hover-black">Ver Tudo<i
-                                    class="material-icons left">notifications</i></a></li>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li>
+                        <notifications></notifications>
+                    </li>
                 </ul>
-            </ul>
-        </div>
-    </nav>
+            </div>
+        </nav>
+    </div>
+
+    @include('layouts.sideNav')
+
+    <div id="content" class="center"
+         style="width: 100%; height: 300px; @if(Auth::user()->active && Auth::user()->email != env('USER_ROOT_MAIL')) padding-left: '300px'; @endif">
+        @include('includes.alerts')
+        @yield('content')
+    </div>
 </div>
-
-@include('layouts.SideNav')
-
-<div id="content" class="center" style="width: 100%; height: 300px; @if(Auth::user()->active && Auth::user()->email != env('USER_ROOT_MAIL')) padding-left: '300px'; @endif">
-    @include('includes.alerts')
-    @yield('content')
-</div>
-
-
+<script src="{{ asset('js/app.js') }}"></script>
 <script>
     $(document).ready(function () {
         $('.sidenav').sidenav();
@@ -205,7 +206,7 @@
     $(window).resize(function () {
         if ($('#slide-out').is(':hidden')) {
             $('#content').css('padding-left', '0');
-        }else{
+        } else {
             @if(Auth::user()->active && Auth::user()->email != env('USER_ROOT_MAIL')) $('#content').css('padding-left', '300px'); @endif
         }
     });
@@ -213,7 +214,7 @@
     $(window).ready(function () {
         if ($('#slide-out').is(':hidden')) {
             $('#content').css('padding-left', '0');
-        }else{
+        } else {
             @if(Auth::user()->active && Auth::user()->email != env('USER_ROOT_MAIL')) $('#content').css('padding-left', '300px'); @endif
         }
     });

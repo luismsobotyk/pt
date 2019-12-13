@@ -21,7 +21,7 @@ class ReportFillController extends Controller
 {
     public function __construct()
     {
-        parent::__construct();
+        //
     }
 
     public function preencherRelatorio($numAba = null)

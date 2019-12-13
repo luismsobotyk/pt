@@ -14,11 +14,7 @@ class MainController extends Controller
 
     public function __construct()
     {
-        parent::__construct();
-    }
-
-    public function verNotificacoes(){
-        return view('notificacoes');
+       //
     }
 
     public function listarPlanos(){

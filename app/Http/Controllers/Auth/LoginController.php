@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Socialite;
-use Auth;
 use App\Models\User;
+use App\Notifications\NotifyNewUser;
+use App\Notifications\WelcomeUser;
+use Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\DB;
+use Socialite;
 
 class LoginController extends Controller
 {
@@ -40,14 +43,10 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-
-
-
-
     /**
      * Redirect the user to the GitHub authentication page.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function redirectToProvider($provider)
     {
@@ -57,7 +56,7 @@ class LoginController extends Controller
     /**
      * Obtain the user information from GitHub.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function handleProviderCallback($provider)
     {
@@ -65,18 +64,16 @@ class LoginController extends Controller
         $authUser = $this->findOrCreateUser($user, $provider);
         Auth::login($authUser, true);
         return redirect($this->redirectTo);
-        //return $user->token;
     }
 
     public function findOrCreateUser($user, $provider){
 
         $authUser = User::where('provider_id', $user->id)->first();
-
         if($authUser){
             $authUser->update(['profile_photo' => $user->avatar_original]);
             return $authUser;
         }
-        return User::create([
+        $NewUser =  User::create([
             'name'      => $user->name,
             'email'     => $user->email,
             'profile_photo' => $user->avatar_original,
@@ -84,7 +81,16 @@ class LoginController extends Controller
             'provider_id'   => $user->id,
             'active' => $user->email == env('USER_ROOT_MAIL') ? true : null
         ]);
+
+        $NewUser->notify(new WelcomeUser($NewUser));
+
+        $Director = User::where('director', true)->first();
+        if($Director){
+            $Director->notify(new NotifyNewUser($NewUser));
+        }
+
+        return $NewUser;
+
     }
-
-
 }
+

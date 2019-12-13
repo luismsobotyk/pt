@@ -11,7 +11,6 @@
 |
 */
 
-
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -41,11 +40,14 @@ Route::group(['middleware' => ['auth', 'notroot']], function (){
     Route::post('myProfile/edit/save', 'ProfileController@saveEditedProfileInfos')->name('salvarMinhasInfosEditadas');
 });
 
+
+
 //DEMAIS ROTAS PARA USUÁRIOS AUTENTICADOS
 Route::group(['middleware' => ['auth', 'notroot', 'useractive']], function () {
+    Route::get('notifications', 'NotificationController@json')->name('notifications');
+    Route::get('/notificacoes/{id?}', 'NotificationController@notificacoes')->name('notificacoes');
     //-- Rotas para usuário comum --//
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('notifications', 'MainController@verNotificacoes')->name('notificacoes');
     Route::get('/meusPlanos', 'MainController@listarPlanos')->name('meusPlanos');
     Route::get('/meusPlanos/plano/{id}', 'MainController@verPlano')->name('verPlano');
     Route::get('/meusRelatorios', 'MainController@listarRelatorios')->name('meusRelatorios');

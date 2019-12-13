@@ -1,0 +1,1 @@
+21/11/2019 - Para o envio de email de teste foi preciso parar o serve e executar o comando "php artisan config:cache"

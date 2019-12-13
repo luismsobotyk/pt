@@ -2,12 +2,6 @@
 
 @section('content')
 
-    <style>
-        .font4-margin10 {
-            font-size: 4em;
-            margin-top: 10px;
-        }
-    </style>
     <div class="container" style="margin-top: 6rem;">
         <div class="row">
 

@@ -9,7 +9,7 @@
                 <li>
                     <div class="center">
                         <a href="{{ route('welcome') }}" class="grey-text">
-                            <row><i class="medium material-icons grey-text">home</i></row>
+                            <i class="medium material-icons grey-text">home</i>
                             <p class="flow-text espacamento-li-sidenav">Página Inicial</p>
                         </a>
                     </div>
@@ -17,7 +17,7 @@
                 <li>
                     <div class="center">
                         <a href="{{ route('myProfile') }}" class="grey-text">
-                            <row><i class="medium material-icons grey-text">account_circle</i></row>
+                            <i class="medium material-icons grey-text">account_circle</i>
                             <p class="flow-text espacamento-li-sidenav">Meu Perfil</p>
                         </a>
                     </div>
@@ -25,7 +25,7 @@
                 <li>
                     <div class="center">
                         <a href="{{ route('meusPlanos') }}" class="grey-text">
-                            <row><i class="medium material-icons grey-text">assignment</i></row>
+                            <i class="medium material-icons grey-text">assignment</i>
                             <p class="flow-text espacamento-li-sidenav">Meus Planos</p>
                         </a>
                     </div>
@@ -33,7 +33,7 @@
                 <li>
                     <div class="center">
                         <a href="{{ route('meusRelatorios') }}" class="grey-text">
-                            <row><i class="medium material-icons grey-text">format_list_bulleted</i></row>
+                            <i class="medium material-icons grey-text">format_list_bulleted</i>
                             <p class="flow-text espacamento-li-sidenav">Meus Relatórios</p>
                         </a>
                     </div>
