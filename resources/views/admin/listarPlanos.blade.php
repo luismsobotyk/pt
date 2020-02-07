@@ -438,7 +438,7 @@
 
 
 
-    <script>
+    <script type="application/javascript">
         $(document).ready(function () {
             $('select').formSelect();
         });

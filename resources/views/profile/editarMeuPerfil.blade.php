@@ -126,7 +126,7 @@
         </form>
     </div>
 
-    <script>
+    <script type="application/javascript">
         $(document).ready(function () {
             $('.tooltipped').tooltip();
         });

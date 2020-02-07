@@ -5,10 +5,11 @@ namespace App\Notifications;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NotifyNewUser extends Notification //implements ShouldQueue
+class NotifyNewUser extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -32,7 +33,7 @@ class NotifyNewUser extends Notification //implements ShouldQueue
     public function via($notifiable)
     {
 //        return ['mail'];
-        return ['database'];
+        return ['database', 'broadcast'];
     }
 
     /**
@@ -57,11 +58,16 @@ class NotifyNewUser extends Notification //implements ShouldQueue
      * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toBroadcast($notifiable)
     {
-        return [
-            //
-        ];
+        return new BroadcastMessage([
+            'id' => $this->id,
+            'read_at' => null,
+            'notifiable_id' =>  User::where('director', true)->first()->id,
+            'data' => [
+                'user' => $this->user,
+            ]
+        ]);
     }
 
     public function toDatabase($notifiable)
