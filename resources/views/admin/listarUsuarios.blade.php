@@ -34,10 +34,6 @@
         </table>
     </div>
     <script type="application/javascript">
-        $(document).ready(function(){
-            $('.tooltipped').tooltip();
-        });
-
         function usersFilter() {
             var input, filter, lista, tr, i, txtValue;
             input = document.getElementById("myInput");

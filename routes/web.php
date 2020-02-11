@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth', 'notroot']], function (){
 Route::group(['middleware' => ['auth', 'notroot', 'useractive']], function () {
     Route::get('notifications', 'NotificationController@json')->name('notifications');
     Route::get('/notificacoes/{id?}', 'NotificationController@notificacoes')->name('notificacoes');
+    Route::get('/notificacoes/lida/{id?}', 'NotificationController@markAsRead')->name('markAsRead');
     //-- Rotas para usuário comum --//
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/meusPlanos', 'MainController@listarPlanos')->name('meusPlanos');
@@ -66,6 +67,7 @@ Route::group(['middleware' => ['auth', 'notroot', 'useractive']], function () {
     Route::post('periodos/novo/salvar', 'AdminController@salvarNovoPeriodo')->name('salvarNovoPeriodo');
     Route::get('/listarPeriodos', 'AdminController@listarPeriodos')->name('listarPeriodos');
     Route::get('/periodos/{id}/editarPeriodo', 'AdminController@editarPeriodo')->name('editarPeriodo');
+    Route::get('/periodos/{id}/excluir', 'AdminController@excluirPeriodo')->name('excluirPeriodo');
     Route::post('/periodos/{id}/editarPeriodo/salvar', 'AdminController@salvarPeriodo')->name('salvarPeriodo');
     Route::get('/verPlanos/{period?}', 'AdminController@listarPlanos')->name('listarPlanos');
     Route::get('/verRelatorios/{period?}', 'AdminController@listarRelatorios')->name('listarRelatorios');

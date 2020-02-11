@@ -78,7 +78,7 @@
         }
     </style>
     @auth
-        <script>window.location = "/home";</script>
+        <script type="application/javascript">window.location = "/home";</script>
     @endauth
 </head>
 <body>

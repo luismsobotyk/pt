@@ -46,7 +46,7 @@
         </form>
     </div>
 
-    <script>
+    <script type="application/javascript">
         $(document).ready(function () {
             $('#period').mask('0000/0');
         });

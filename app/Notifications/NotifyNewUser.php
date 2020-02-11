@@ -33,7 +33,7 @@ class NotifyNewUser extends Notification implements ShouldQueue
     public function via($notifiable)
     {
 //        return ['mail'];
-        return ['database', 'broadcast'];
+        return ['database', 'mail', 'broadcast'];
     }
 
     /**

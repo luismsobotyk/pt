@@ -192,7 +192,7 @@
 
 
 
-    <script>
+    <script type="application/javascript">
         $(document).ready(function(){
             $('.modal').modal();
             $(".ordinance").mask('#9/9999', {reverse: true});

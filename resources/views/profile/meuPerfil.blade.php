@@ -12,7 +12,7 @@
                 <br/>
 
                 <h5>{{ Auth::user()->name }} @if(Auth::user()->director) (Diretor) @endif</h5>
-                <h7>{{ Auth::user()->email }}</h7>
+                <h4>{{ Auth::user()->email }}</h4>
 
                 <br/>
                 <br/>
@@ -69,11 +69,4 @@
             </div>
         </div>
     </div>
-
-    <script type="application/javascript">
-        $(document).ready(function () {
-            $('.tooltipped').tooltip();
-        });
-    </script>
-
 @endsection

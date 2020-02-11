@@ -19,7 +19,7 @@
         @yield('abaPreenchimento')
     </div>
 
-    <script>
+    <script type="application/javascript">
         /*
          * COMUNS A TODAS AS ABAS
          */

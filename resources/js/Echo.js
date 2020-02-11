@@ -9,6 +9,7 @@ if(Laravel.user){
             if(Laravel.user == notification.notifiable_id){
                 if(notification.type == typesNotifications.newUser){
                     store.commit('ADD_NOTIFICATION', notification)
+                    toastNotification('Um novo usuário se cadastrou no sistema!', '/notificacoes/' + notification.id)
                 }
             }
         })

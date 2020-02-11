@@ -172,7 +172,7 @@
 
 
 
-    <script>
+    <script type="application/javascript">
         $(document).ready(function(){
             $('.modal').modal();
         });

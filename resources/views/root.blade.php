@@ -46,7 +46,7 @@
             </table>
         </form>
     </div>
-    <script>
+    <script type="application/javascript">
         function usersFilter() {
             var input, filter, lista, tr, i, txtValue;
             input = document.getElementById("myInput");

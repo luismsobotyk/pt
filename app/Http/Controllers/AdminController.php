@@ -22,17 +22,27 @@ class AdminController extends Controller
         return view('admin.listarUsuarios')->with('users', $users);
     }
 
-    public function verUsuario(){
-        return view('admin.verUsuario');
+    public function verUsuario(Request $request){
+        $user = User::find($request->id);
+        return view('admin.verUsuario')->with('user', $user);
     }
 
-    public function viewPermissoes(){
-        return view('admin.editarPermissoes');
+    public function viewPermissoes(Request $request){
+        $user = User::find($request->id);
+        return view('admin.editarPermissoes')->with('user', $user);
     }
 
-    public function salvarPermissoes(){
-        //return redirect()->route('verUsuario', 1)->with('error', 'Houve um erro ao tentar atualizar as permissões.');
-        return redirect()->route('verUsuario', 1)->with('success', 'As permissões foram atualizadas.');
+    public function salvarPermissoes(Request $request){
+        $user = User::find($request->id);
+        $user->registerPlan = $request->has('registerPlan');
+        $user->seePlans = $request->has('seePlans');
+        $user->seeUsersList = $request->has('seeUsersList');
+        $user->setPermissions = $request->has('setPermissions');
+        $user->setSubmissionPeriod = $request->has('setSubmissionPeriod');
+        $user->approveDocuments = $request->has('approveDocuments');
+        $user->reopenPlans = $request->has('reopenPlans');
+        $user->save();
+        return redirect()->route('verUsuario', $user->id)->with('success', 'As permissões foram atualizadas.');
     }
 
     public function novoPeriodo(){
@@ -58,6 +68,17 @@ class AdminController extends Controller
         return view('admin.listarPeriodos')->with('periodos', $periodos);
     }
 
+    public function excluirPeriodo($id){
+        $period= Period::find($id);
+        $workPlans = WorkPlan::where('period_id', $period->id);
+        if($workPlans->count() > 0){
+            return redirect()->route('editarPeriodo', $period->id)->with('error', 'O período não pode ser excluído pois contém planos cadastrados');
+        }else{
+            $period->delete();
+            return redirect()->route('listarPeriodos')->with('success', 'O período foi excluído');
+        }
+    }
+
     public function editarPeriodo($id){
         $period= Period::find($id);
         return view('admin.editarPeriodo')->with('periodo', $period);
@@ -70,8 +91,7 @@ class AdminController extends Controller
         $periodo->report_opening_date= $request->report_opening_date;
         $periodo->report_closing_date= $request->report_closing_date;
         $periodo->save();
-        return dd($periodo->period);
-        //return redirect()->route('listarPeriodos', 1)->with('success', 'O período '.$periodo->period.' foi atualizado');
+        return redirect()->route('listarPeriodos')->with('success', 'O período '.$periodo->period.' foi atualizado');
     }
 
     public function listarPlanos($period= 0){

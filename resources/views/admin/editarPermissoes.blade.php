@@ -1,107 +1,81 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container" style="margin-top: 5rem;">
-        <form action="{{ route('salvarPermissoes', 1) }}" method="post">
+        <form action="{{ route('salvarPermissoes', $user->id) }}" method="post">
             @csrf
             <div class="row">
                 <div class="col xl6 l6 m12 s12">
-                    <img class="circle responsive-img z-depth-2" src="{{Auth::user()->profile_photo}}"
+                    <img class="circle responsive-img z-depth-2" src="{{$user->profile_photo}}"
                          style="width: 15rem; height: 15rem; margin-top:2rem; text-align:center;">
-
                     <br/>
-
-                    <h5>{{ Auth::user()->name }}</h5>
-                    <h7>{{ Auth::user()->email }}</h7>
-
+                    <h5>{{ $user->name }}</h5>
+                    <h6>{{ $user->email }}</h6>
                     <br/>
                     <br/>
-
                     <div class="divider"></div>
-
                     <table>
                         <tbody>
-
-
                         <tr>
-                            <td>Área de Conhecimento: <b>Área Tal</b></td>
+                            <td>Área de Conhecimento: <b>{{ $user->knowledge_area }}</b></td>
                         </tr>
-
                         <tr>
-                            <td>Magistério: <b>Magistério EBTT ou ES</b></td>
+                            <td>Magistério: <b>{{ $user->teaching }}</b></td>
                         </tr>
-
                         <tr>
-                            <td>Regime de Trabalho: <b>40h</b></td>
+                            <td>Regime de Trabalho: <b>{{ $user->regime }}</b></td>
                         </tr>
-
                         <tr>
                             <td>Este usuário está com o plano <b>2019/2 em aberto</b></td>
                         </tr>
-
                         <tr>
                             <td>Este usuário está com o relatório <b>2019/1 em aberto</b></td>
                         </tr>
-
-
                         </tbody>
                     </table>
-
                 </div>
                 <div class="col xl6 l6 m12 s12 margin-2-top">
                     <div class="right-align">
                         <i>
-                            Ultimo Acesso: 10/09/2019
+                            Ultimo Acesso: XX/XX/XXXX
                             <br/>
-                            Atualizado em: 12/09/2019
+                            Atualizado em: XX/XX/XXXX
                         </i>
                     </div>
                     <br/>
                     <div class="left">
                         <h5>Permissões do Usuário:</h5>
                     </div>
-
                     <table class="col s10 offset-s1 striped margin-2-top">
                         <tbody>
-
-
                         <tr>
                             <td>Registrar Plano</td>
-                            <td><label><input type="checkbox" checked/><span></span></label></td>
+                            <td><label><input name="registerPlan" type="checkbox" @if($user->registerPlan) checked @endif/><span></span></label></td>
                         </tr>
-
                         <tr>
                             <td>Ver Planos</b></td>
-                            <td><label><input type="checkbox" checked/><span></span></label></td>
+                            <td><label><input name="seePlans" type="checkbox" @if($user->seePlans) checked @endif/><span></span></label></td>
                         </tr>
-
                         <tr>
                             <td>Listar Usuários</td>
-                            <td><label><input type="checkbox"/><span></span></label></td>
+                            <td><label><input name="seeUsersList" type="checkbox" @if($user->seeUsersList) checked @endif/><span></span></label></td>
                         </tr>
-
                         <tr>
                             <td>Mudar Permissões</td>
-                            <td><label><input type="checkbox"/><span></span></label></td>
+                            <td><label><input name="setPermissions" type="checkbox" @if($user->setPermissions) checked @endif/><span></span></label></td>
                         </tr>
-
                         <tr>
                             <td>Abrir Período para envio de Plano/Relatório</td>
-                            <td><label><input type="checkbox"/><span></span></label></td>
+                            <td><label><input name="setSubmissionPeriod" type="checkbox" @if($user->setSubmissionPeriod) checked @endif/><span></span></label></td>
                         </tr>
-
                         <tr>
                             <td>Aprovar planos e/ou relatórios</td>
-                            <td><label><input type="checkbox"/><span></span></label></td>
+                            <td><label><input name="approveDocuments" type="checkbox" @if($user->approveDocuments) checked @endif/><span></span></label></td>
                         </tr>
-
                         <tr>
                             <td>Reabrir planos e/ou relatórios</td>
-                            <td><label><input type="checkbox"/><span></span></label></td>
+                            <td><label><input name="reopenPlans" type="checkbox" @if($user->reopenPlans) checked @endif/><span></span></label></td>
                         </tr>
-
-
                         </tbody>
                     </table>
 

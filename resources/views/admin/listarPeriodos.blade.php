@@ -54,9 +54,4 @@
             <i>Não existem períodos cadastrados</i>
         @endif
     </div>
-    <script type="application/javascript">
-        $(document).ready(function () {
-            $('.tooltipped').tooltip();
-        });
-    </script>
 @endsection

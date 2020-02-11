@@ -60476,12 +60476,10 @@ var typesNotifications = {
 
 if (Laravel.user) {
   Echo["private"]("App.Models.User.".concat(Laravel.user)).notification(function (notification) {
-    console.log(Laravel.user);
-    console.log(notification);
-
     if (Laravel.user == notification.notifiable_id) {
       if (notification.type == typesNotifications.newUser) {
         _vuex_store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('ADD_NOTIFICATION', notification);
+        toastNotification('Um novo usuário se cadastrou no sistema!', '/notificacoes/' + notification.id);
       }
     }
   });
@@ -60744,6 +60742,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
     items: []
@@ -60759,7 +60759,9 @@ __webpack_require__.r(__webpack_exports__);
   actions: {
     loadNotifications: function loadNotifications(context) {
       axios.get('/notifications').then(function (response) {
-        context.commit('LOAD_NOTIFICATIONS', response.data.notifications);
+        if (_typeof(response.data) === 'object' && 'notifications' in response.data) {
+          context.commit('LOAD_NOTIFICATIONS', response.data.notifications);
+        }
       });
     }
   }

@@ -7,10 +7,7 @@
             @csrf
             <h5>Editando Período: {{ $periodo->period }}</h5>
             <br/>
-
-
             <div class="row margin-6-top">
-
                 <div class="input-field col xl6 l6 m6 s12">
                     <input type="date" class="datepicker" name="work_plan_opening_date" value="{{ $periodo->work_plan_opening_date }}">
                     <label for="workPlanOpeningDate">Data de Abertura do Plano</label>
@@ -28,11 +25,12 @@
                     <input type="date" class="datepicker" name="report_closing_date" value="{{ $periodo->report_closing_date }}">
                     <label for="reportClosingDate">Data de Fechamento do Relatório</label>
                 </div>
-
             </div>
-
             <div class="row">
                 <div class="col xl12 l12 m12 s12 right-align">
+                    <a class="btn waves-effect waves-light red accent-4" href="{{ route('excluirPeriodo', $periodo->id) }}">Excluir
+                        <i class="material-icons left">delete</i>
+                    </a>
                     <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action">Salvar
                         <i class="material-icons left">save</i>
                     </button>
@@ -40,7 +38,7 @@
             </div>
         </form>
     </div>
-    <script>
+    <script type="application/javascript">
         $(document).ready(function () {
             $('#period').mask('0000/0');
         });

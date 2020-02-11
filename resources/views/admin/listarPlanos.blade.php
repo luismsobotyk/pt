@@ -125,14 +125,9 @@
                         <a href="#" class="black-text tooltipped" data-position="right" data-tooltip="Sugerir Alteração"><i class="material-icons">add_alert</i></a>
                     </td>
                 </tr>
-
                 </tbody>
-
             </table>
         </div>
-
-
-
         <div class="row left-align margin-2-top">
             <h5>Aguardando Aprovação:</h5>
             <table class="responsive-table striped">
@@ -333,17 +328,11 @@
                     </td>
                 </tr>
                 </tbody>
-
             </table>
         </div>
-
-
-
-
         <div class="row left-align margin-2-top">
             <h5>Não Entregues:</h5>
             <table class="responsive-table striped">
-
                 <thead>
                 <tr>
                     <th>
@@ -430,21 +419,12 @@
                     </td>
                 </tr>
                 </tbody>
-
             </table>
         </div>
-
     </div>
-
-
-
     <script type="application/javascript">
         $(document).ready(function () {
             $('select').formSelect();
         });
-        $(document).ready(function(){
-            $('.tooltipped').tooltip();
-        });
     </script>
-
 @endsection

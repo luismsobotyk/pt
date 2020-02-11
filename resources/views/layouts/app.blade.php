@@ -125,7 +125,7 @@
 
         .margin-6-top {
             margin-top: 6rem;
-        }
+
     </style>
 
 </head>
@@ -181,18 +181,16 @@
 
     <div id="content" class="center"
          style="width: 100%; height: 300px; @if(Auth::user()->active && Auth::user()->email != env('USER_ROOT_MAIL')) padding-left: '300px'; @endif">
-        @include('includes.alerts')
         @yield('content')
     </div>
 </div>
+@include('includes.alerts')
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
     $(document).ready(function () {
         $('.sidenav').sidenav();
-    });
 
-    // Inicia a funcao de colapsar a navbar e sidebar em telas menores.
-    $(document).ready(function () {
+        // Inicia a funcao de colapsar a navbar e sidebar em telas menores.
         $('.sidenav-custom')
             .sidenav()
             .on('click tap', '#hide-sidenav', () => {
@@ -201,7 +199,12 @@
                 $('#content').css('padding-left', '0');
                 $('.collapsed-button-sidenav').show();
             });
+
+        //
+        $('.tooltipped').tooltip();
+
     });
+
 
     // Inicia a funcao que oculta a sidenav quando o usuario clica no botao de id #hide-sidenav e altera a posição e tamanho da div content
     $('#show-sidenav').on('click', function () {

@@ -7,10 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
-    public function notificacoes(){
-        $notifications = Auth::user()->notifications;
+    public function notificacoes(Request $request){
+        $notifications = $request->id ? Auth::user()->unreadNotifications->where('id', $request->id) : Auth::user()->unreadNotifications;
         return view('notificacoes')->with('notifications',$notifications);
     }
+
 
     public function json(Request $request){
         $notifications = Auth::user()->unreadNotifications;
@@ -24,6 +25,7 @@ class NotificationController extends Controller
             ->first();
         if($notification)
             $notification->markAsRead();
+        return redirect()->route('notificacoes');
     }
 
 }

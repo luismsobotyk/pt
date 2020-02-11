@@ -168,7 +168,7 @@
 
 
 
-    <script>
+    <script type="application/javascript">
         // Alterando aba ativa no layout de preenchimento e setando funções onClick com os links corretos de cada aba.
         $("#opAulas").addClass("active");
 

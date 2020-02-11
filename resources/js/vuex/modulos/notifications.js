@@ -7,7 +7,7 @@ export default {
         LOAD_NOTIFICATIONS(state, notifications) {
             state.items = notifications
         },
-        ADD_NOTIFICATION(state, notification){
+        ADD_NOTIFICATION(state, notification) {
             state.items.push(notification)
         }
     },
@@ -16,7 +16,9 @@ export default {
         loadNotifications(context) {
             axios.get('/notifications')
                 .then(response => {
-                    context.commit('LOAD_NOTIFICATIONS', response.data.notifications)
+                    if (typeof response.data === 'object' && 'notifications' in response.data) {
+                        context.commit('LOAD_NOTIFICATIONS', response.data.notifications)
+                    }
                 })
         },
     }
