@@ -146,19 +146,19 @@
                     </li>
                 </ul>
 
-                @if(Auth::user()->director)
+                @if(Auth::user()->director || Auth::user()->active)
                     <ul id="nav-mobile" class="brand-logo center hide-on-med-and-down">
                         <li>
                             <a href="{{ route('listarPeriodos') }}">Períodos</a>
                         </li>
                         <li>
-                            <a href="{{ route('listarPlanos') }}">Listar Planos</a>
+                            @if(Auth::user()->seePlans)<a href="{{ route('listarPlanos') }}">Listar Planos</a>@endif
                         </li>
                         <li>
-                            <a href="{{ route('listarRelatorios') }}">Listar Relatórios</a>
+                            @if(Auth::user()->seePlans)<a href="{{ route('listarRelatorios') }}">Listar Relatórios</a>@endif
                         </li>
                         <li>
-                            <a href="{{ route('listarUsuarios') }}">Ver Usuários</a>
+                            @if(Auth::user()->seeUsersList)<a href="{{ route('listarUsuarios') }}">Ver Usuários</a>@endif
                         </li>
                     </ul>
                 @endif

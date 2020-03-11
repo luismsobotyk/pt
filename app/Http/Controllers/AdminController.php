@@ -22,6 +22,13 @@ class AdminController extends Controller
         return view('admin.listarUsuarios')->with('users', $users);
     }
 
+    public function setStatusUsuario(Request $request){
+        $user = User::find($request->id);
+        $user->active = $user->active ? 0 : 1;
+        $user->save();
+        return view('admin.verUsuario')->with('user', $user);
+    }
+
     public function verUsuario(Request $request){
         $user = User::find($request->id);
         return view('admin.verUsuario')->with('user', $user);

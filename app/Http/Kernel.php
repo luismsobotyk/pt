@@ -64,7 +64,8 @@ class Kernel extends HttpKernel
         //
         'useractive' => \App\Http\Middleware\UserActive::class,
         'notroot' => \App\Http\Middleware\NotRoot::class,
-        'root' => \App\Http\Middleware\UserRoot::class
+        'root' => \App\Http\Middleware\UserRoot::class,
+        'checkpermissions' => \App\Http\Middleware\CheckPermissions::class
     ];
 
     /**

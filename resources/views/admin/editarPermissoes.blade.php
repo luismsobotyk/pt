@@ -9,7 +9,7 @@
                     <img class="circle responsive-img z-depth-2" src="{{$user->profile_photo}}"
                          style="width: 15rem; height: 15rem; margin-top:2rem; text-align:center;">
                     <br/>
-                    <h5>{{ $user->name }}</h5>
+                    <h5>{{ $user->name }} @if($user->director)(Diretor)@endif</h5>
                     <h6>{{ $user->email }}</h6>
                     <br/>
                     <br/>
@@ -46,7 +46,7 @@
                     <div class="left">
                         <h5>Permissões do Usuário:</h5>
                     </div>
-                    <table class="col s10 offset-s1 striped margin-2-top">
+                    <table class="s10 offset-s1 striped margin-2-top">
                         <tbody>
                         <tr>
                             <td>Registrar Plano</td>
@@ -84,6 +84,11 @@
 
             <div class="row">
                 <div class="col xl6 l6 m12 s12 offset-xl6 offset-l6 offset-m0 offset-s0 right-align">
+                    @if($user->active)
+                        <a href="{{ route('setStatus', $user->id) }}" class="waves-effect waves-light btn red darken-3 left"><i class="material-icons left">lock_outline</i>Desativar Usuário</a>
+                    @else
+                        <a href="{{ route('setStatus', $user->id) }}" class="waves-effect waves-light btn green darken-3 left"><i class="material-icons left">lock_open</i>Ativar Usuário</a>
+                    @endif
                     <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action">Salvar
                         Permissões
                         <i class="material-icons left">save</i>

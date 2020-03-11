@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class UserActive
 {
@@ -15,7 +16,7 @@ class UserActive
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user()->active != true) {
+        if (Auth::user()->director == false && Auth::user()->active != true) {
             return redirect('myProfile');
         }
         return $next($request);

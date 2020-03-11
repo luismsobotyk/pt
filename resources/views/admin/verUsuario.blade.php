@@ -11,7 +11,7 @@
 
                 <br/>
 
-                <h5>{{ $user->name }}</h5>
+                <h5>{{ $user->name }} @if($user->director)(Diretor)@endif</h5>
                 <h6>{{ $user->email }}</h6>
 
                 <br/>
@@ -52,7 +52,7 @@
                 <div class="left">
                     <h5>Permissões do Usuário:</h5>
                 </div>
-                <table class="col s10 offset-s1 striped margin-2-top">
+                <table class="s10 offset-s1 striped margin-2-top">
                     <tbody>
                     <tr>
                         <td>Registrar Plano</td>
@@ -130,7 +130,14 @@
         </div>
         <div class="row">
             <div class="col xl6 l6 m12 s12 offset-xl6 offset-l6 offset-m0 offset-s0 right-align">
-                <a href="{{ route('editarPermissao', $user->id) }}" class="waves-effect waves-light btn amber darken-3"><i class="material-icons left">settings</i>Editar Permissões</a>
+                @if(Auth::user()->setPermissions)
+                    @if($user->active)
+                        <a href="{{ route('setStatus', $user->id) }}" class="waves-effect waves-light btn red darken-3 left"><i class="material-icons left">lock_outline</i>Desativar Usuário</a>
+                    @else
+                        <a href="{{ route('setStatus', $user->id) }}" class="waves-effect waves-light btn green darken-3 left"><i class="material-icons left">lock_open</i>Ativar Usuário</a>
+                    @endif
+                    <a href="{{ route('editarPermissao', $user->id) }}" class="waves-effect waves-light btn amber darken-3"><i class="material-icons left">settings</i>Editar Permissões</a>
+                @endif
             </div>
         </div>
     </div>

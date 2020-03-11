@@ -11,7 +11,7 @@
             <div class="row">
 
                 <div class="input-field col xl6 l6 m6 s12">
-                    <input type="text" id="knowledge_area" class="autocomplete" value="" name="knowledge_area">
+                    <input type="text" id="knowledge_area" class="autocomplete" value="@if($WorkPlan->identification) {{$WorkPlan->identification->knowledge_area}}@endif" name="knowledge_area">
                     <label for="knowledge_area">Área de Conhecimento</label>
                 </div>
 
@@ -20,13 +20,13 @@
                 </div>
                 <div class="input-field col xl2 l2 m2 s4">
                     <label>
-                        <input class="with-gap" name="teaching" type="radio" value=""/>
+                        <input class="with-gap" name="teaching" type="radio" @if($WorkPlan->identification->teaching == 'EBTT') checked @endif/>
                         <span>EBTT</span>
                     </label>
                 </div>
                 <div class="input-field col xl2 l2 m2 s4">
                     <label>
-                        <input class="with-gap" name="teaching" type="radio"  value="ES"/>
+                        <input class="with-gap" name="teaching" type="radio" @if($WorkPlan->identification->teaching == 'ES') checked @endif/>
                         <span>ES</span>
                     </label>
                 </div>
@@ -38,25 +38,25 @@
                 </div>
                 <div class="input-field col xl2 l2 m2 s6">
                     <label>
-                        <input class="with-gap" name="regime" type="radio"   value="20"/>
+                        <input class="with-gap" name="regime" type="radio" @if($WorkPlan->identification->regime == '20') checked @endif>
                         <span>20h</span>
                     </label>
                 </div>
                 <div class="input-field col xl2 l2 m2 s6">
                     <label>
-                        <input class="with-gap" name="regime" type="radio" value="40"/>
+                        <input class="with-gap" name="regime" type="radio" @if($WorkPlan->identification->regime == '40') checked @endif/>
                         <span>40h</span>
                     </label>
                 </div>
                 <div class="input-field col xl2 l2 m2 s6">
                     <label>
-                        <input class="with-gap" name="regime" type="radio"  value="DE"/>
+                        <input class="with-gap" name="regime" type="radio" @if($WorkPlan->identification->regime == 'DE') checked @endif/>
                         <span>DE</span>
                     </label>
                 </div>
                 <div class="input-field col xl2 l2 m2 s6 offset-s6">
                     <label>
-                        <input class="with-gap" name="regime" type="radio" value="Visitante"/>
+                        <input class="with-gap" name="regime" type="radio" @if($WorkPlan->identification->regime == 'Visitante') checked @endif/>
                         <span>Visitante</span>
                     </label>
                 </div>

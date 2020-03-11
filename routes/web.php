@@ -41,34 +41,38 @@ Route::group(['middleware' => ['auth', 'notroot']], function (){
     Route::post('myProfile/edit/save', 'ProfileController@saveEditedProfileInfos')->name('salvarMinhasInfosEditadas');
 });
 
-
-
 //DEMAIS ROTAS PARA USUÁRIOS AUTENTICADOS
 Route::group(['middleware' => ['auth', 'notroot', 'useractive']], function () {
+    /*
+     * Para a middleware checkpermissions use como separador | para mais de uma permissão a ser checada para o usuário logado na rota solicitada
+     * Ex:
+     * Route::get(...)->middleware('checkpermissions:seePlans|registerPlan');
+     */
     Route::get('notifications', 'NotificationController@json')->name('notifications');
     Route::get('/notificacoes/{id?}', 'NotificationController@notificacoes')->name('notificacoes');
     Route::get('/notificacoes/lida/{id?}', 'NotificationController@markAsRead')->name('markAsRead');
     //-- Rotas para usuário comum --//
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/meusPlanos', 'MainController@listarPlanos')->name('meusPlanos');
-    Route::get('/meusPlanos/plano/{id}', 'MainController@verPlano')->name('verPlano');
+    Route::get('/meusPlanos', 'PlanController@listarPlanos')->name('meusPlanos');
+    Route::get('/meusPlanos/plano/{id}', 'PlanController@verPlano')->name('verPlano');
     Route::get('/meusRelatorios', 'MainController@listarRelatorios')->name('meusRelatorios');
     Route::get('/meusRelatorios/relatorio/{id}', 'MainController@verRelatorio')->name('verRelatorio');
-    Route::post('/preencherPlano/save', 'MainController@salvarPlano')->name('salvarPlano');
-    Route::any('/preencherPlano/{numAba?}', 'MainController@preencherPlano')->name('preencherPlano');
-    Route::post('/preencherRelatorio/salvar', 'ReportFillController@salvarRelatorio')->name('salvarRelatorio');
-    Route::get('/preencherRelatorio/{numAba?}', 'ReportFillController@preencherRelatorio')->name('preencherRelatorio');
+    Route::post('/preencherPlano/save', 'PlanController@salvarPlano')->name('salvarPlano')->middleware('checkpermissions:registerPlan');
+    Route::any('/preencherPlano/{period_id?}/{numAba?}', 'PlanController@preencherPlano')->name('preencherPlano')->middleware('checkpermissions:registerPlan');
+    Route::post('/preencherRelatorio/salvar', 'ReportFillController@salvarRelatorio')->name('salvarRelatorio')->middleware('checkpermissions:registerPlan');
+    Route::get('/preencherRelatorio/{numAba?}', 'ReportFillController@preencherRelatorio')->name('preencherRelatorio')->middleware('checkpermissions:registerPlan');
     //--  Rotas para admin  --//
-    Route::get('/listarUsuarios', 'AdminController@listarUsuarios')->name('listarUsuarios');
-    Route::get('/usuario/{id}', 'AdminController@verUsuario')->name('verUsuario');
-    Route::get('/usuario/{id}/editarPermissoes', 'AdminController@viewPermissoes')->name('editarPermissao');
-    Route::post('/usuario/{id}/editarPermissoes/salvar', 'AdminController@salvarPermissoes')->name('salvarPermissoes');
-    Route::get('periodos/novo', 'AdminController@novoPeriodo')->name('novoPeriodo');
-    Route::post('periodos/novo/salvar', 'AdminController@salvarNovoPeriodo')->name('salvarNovoPeriodo');
+    Route::get('/listarUsuarios', 'AdminController@listarUsuarios')->name('listarUsuarios')->middleware('checkpermissions:seeUsersList');
+    Route::get('/usuario/{id}/setstatus', 'AdminController@setStatusUsuario')->name('setStatus')->middleware('checkpermissions:setPermissions');
+    Route::get('/usuario/{id}', 'AdminController@verUsuario')->name('verUsuario')->middleware('checkpermissions:seeUsersList');
+    Route::get('/usuario/{id}/editarPermissoes', 'AdminController@viewPermissoes')->name('editarPermissao')->middleware('checkpermissions:setPermissions');
+    Route::post('/usuario/{id}/editarPermissoes/salvar', 'AdminController@salvarPermissoes')->name('salvarPermissoes')->middleware('checkpermissions:setPermissions');
+    Route::get('periodos/novo', 'AdminController@novoPeriodo')->name('novoPeriodo')->middleware('checkpermissions:setSubmissionPeriod');
+    Route::post('periodos/novo/salvar', 'AdminController@salvarNovoPeriodo')->name('salvarNovoPeriodo')->middleware('checkpermissions:setSubmissionPeriod');
     Route::get('/listarPeriodos', 'AdminController@listarPeriodos')->name('listarPeriodos');
-    Route::get('/periodos/{id}/editarPeriodo', 'AdminController@editarPeriodo')->name('editarPeriodo');
-    Route::get('/periodos/{id}/excluir', 'AdminController@excluirPeriodo')->name('excluirPeriodo');
-    Route::post('/periodos/{id}/editarPeriodo/salvar', 'AdminController@salvarPeriodo')->name('salvarPeriodo');
-    Route::get('/verPlanos/{period?}', 'AdminController@listarPlanos')->name('listarPlanos');
-    Route::get('/verRelatorios/{period?}', 'AdminController@listarRelatorios')->name('listarRelatorios');
+    Route::get('/periodos/{id}/editarPeriodo', 'AdminController@editarPeriodo')->name('editarPeriodo')->middleware('checkpermissions:setSubmissionPeriod');
+    Route::get('/periodos/{id}/excluir', 'AdminController@excluirPeriodo')->name('excluirPeriodo')->middleware('checkpermissions:setSubmissionPeriod');
+    Route::post('/periodos/{id}/editarPeriodo/salvar', 'AdminController@salvarPeriodo')->name('salvarPeriodo')->middleware('checkpermissions:setSubmissionPeriod');
+    Route::get('/verPlanos/{period?}', 'AdminController@listarPlanos')->name('listarPlanos')->middleware('checkpermissions:seePlans');
+    Route::get('/verRelatorios/{period?}', 'AdminController@listarRelatorios')->name('listarRelatorios')->middleware('checkpermissions:seePlans');
 });

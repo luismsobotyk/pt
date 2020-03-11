@@ -14,6 +14,7 @@
             <tr>
                 <th>Nome</th>
                 <th class="hidden-xs hidden-sm">Emails</th>
+                <th>Status</th>
                 <th>Ultimo Login</th>
                 <th>Ações</th>
             </tr>
@@ -22,11 +23,18 @@
             <tbody id="user_list">
             @foreach($users as $user)
             <tr>
-                <td>{{$user->name}}</td>
+                <td>@if($user->director)<b>{{$user->name}} (Diretor)</b>@else {{$user->name}} @endif</td>
                 <td class="hidden-xs hidden-sm">{{$user->email}}</td>
+                <td>
+                    @if(is_null($user->active)) Aguardando Aprovação
+                    @elseif($user->active == 1) Ativo
+                    @else Inativo
+                    @endif
+                </td>
                 <td>XX/XX/XXXX</td>
                 <td><a href="{{ route('verUsuario', $user->id) }}" class="black-text tooltipped" data-position="left" data-tooltip="Ver informações do Usuário"><i class="material-icons">info_outline</i></a>
-                    <a href="{{ route('editarPermissao', $user->id) }}" class="black-text tooltipped" data-position="right" data-tooltip="Implantar/Editar permissões do Usuário"><i class="material-icons padding-1-left">settings</i></a></td>
+                    @if(Auth::user()->setPermissions)<a href="{{ route('editarPermissao', $user->id) }}" class="black-text tooltipped" data-position="right" data-tooltip="Implantar/Editar permissões do Usuário"><i class="material-icons padding-1-left">settings</i></a>@endif
+                </td>
             </tr>
             @endforeach
             </tbody>

@@ -1,5 +1,5 @@
 <!-- SideBar -->
-@if(Auth::user()->active && Auth::user()->email != env('USER_ROOT_MAIL'))
+@if(Auth::user()->director || (Auth::user()->active && Auth::user()->email != env('USER_ROOT_MAIL')))
     <div>
         <ul id="slide-out" class="sidenav sidenav-fixed sidenav-custom hide-on-med-and-down">
             <a class="sidenav-close" href="#!" id="hide-sidenav"><i class="small material-icons grey-text right">fast_rewind</i></a>

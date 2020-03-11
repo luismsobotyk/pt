@@ -17,10 +17,7 @@
                 <br/>
                 <br/>
                 @if(Auth::user()->active == false)
-                <button class="btn waves-effect waves-light amber darken-3">
-                    <i class="material-icons left">verified_user</i>
-                    Solicitar Liberação de Acesso
-                </button>
+                    <h5><b>Status:</b> Aguardando liberação de acesso!</h5>
                 @endif
                 <br/>
                 <br/>
