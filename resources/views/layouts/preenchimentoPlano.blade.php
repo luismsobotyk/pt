@@ -4,12 +4,12 @@
     <nav class="nav-extended amber darken-3">
         <div class="nav-content">
             <ul class="tabs tabs-transparent tabs-fixed-width">
-                <li class="tab" id="opIdentificacao"><a href="{{ route('preencherPlano', [$Period->id, 1]) }}">Identificação</a></li>
-                <li class="tab" id="opAulas"><a href="{{ route('preencherPlano', [$Period->id, 2]) }}">Aulas</a></li>
-                <li class="tab" id="opEnsino"><a href="{{ route('preencherPlano', [$Period->id, 3]) }}">Ensino</a></li>
-                <li class="tab" id="opPesquisa"><a href="{{ route('preencherPlano', [$Period->id, 4]) }}">Pesquisa</a></li>
-                <li class="tab" id="opExtensao"><a href="{{ route('preencherPlano', [$Period->id, 5]) }}">Extensão</a></li>
-                <li class="tab" id="opAdministrativas"><a href="{{ route('preencherPlano', [$Period->id, 6]) }}">Administrativas</a></li>
+                <li class="tab" id="opIdentificacao"><a href="#" onclick="submitFormPlano(1)">Identificação</a></li>
+                <li class="tab" id="opAulas"><a href="#" onclick="submitFormPlano(2)">Aulas</a></li>
+                <li class="tab" id="opEnsino"><a href="#" onclick="submitFormPlano(3)">Ensino</a></li>
+                <li class="tab" id="opPesquisa"><a href="#" onclick="submitFormPlano(4)">Pesquisa</a></li>
+                <li class="tab" id="opExtensao"><a href="#" onclick="submitFormPlano(5)">Extensão</a></li>
+                <li class="tab" id="opAdministrativas"><a href="#" onclick="submitFormPlano(6)">Administrativas</a></li>
             </ul>
         </div>
     </nav>
@@ -18,7 +18,6 @@
             <div class="col s6">
                 <div class="card blue-grey lighten-4" style="height: 6rem">
                     <div class="card-content white-text">
-
                     </div>
                 </div>
             </div>
@@ -45,4 +44,12 @@
          style="border-top: 1px solid #bdbdbd; margin-top: 1rem; padding-top: 1rem; padding-bottom: 1rem;">
         @yield('abaPreenchimento')
     </div>
+    <script type="application/javascript">
+        function submitFormPlano(proximaAba){
+            $("#formPlano").prepend("<input type='hidden' value='" + {{$WorkPlan->id}} + "' name='plan_id' />");
+            $("#formPlano").prepend("<input type='hidden' value='" + {{$Period->id}} + "' name='periodo' />");
+            $("#formPlano").prepend("<input type='hidden' value='" + proximaAba + "' name='proximaAba' />");
+            $("#formPlano").attr('action', '{{ route('salvarPlano') }}').submit();
+        }
+    </script>
 @endsection

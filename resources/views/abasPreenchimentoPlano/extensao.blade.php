@@ -30,9 +30,9 @@
 
 
     <div class="row" style="margin-top: 2%;">
-        <form class="col s12" id="formExtensao" method="post">
+        <form class="col s12" id="formPlano" method="post">
             @csrf
-
+            <input type="hidden" name="aba" value="5">
             <div class="input-field col xl9 l9 m9 s12">
                 <input type="text" id="activity" name="activity">
                 <label for="activity">Nome da atividade</label>
@@ -83,7 +83,6 @@
                 </a>
             </div>
         </div>
-
         <div class="row">
             <div class="input-field col xl7 l7 m7 s12">
                 <input type="text" id="activity" name="activity" value="Atividade B" disabled>
@@ -104,7 +103,6 @@
                 </a>
             </div>
         </div>
-
         <div class="row">
             <div class="input-field col xl7 l7 m7 s12">
                 <input type="text" id="activity" name="activity" value="Atividade C">
@@ -125,8 +123,6 @@
                 </a>
             </div>
         </div>
-
-
         <div class="row">
             <div class="input-field col xl7 l7 m7 s12">
                 <input type="text" id="activity" name="activity" value="Atividade D" disabled>
@@ -147,62 +143,19 @@
                 </a>
             </div>
         </div>
-
-
     </div>
-
-
-
     <footer class="page-footer grey lighten-3 grey-text">
         <div class="row">
             <div class="col s6 left-align">
-                <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                        form="formExtensao" formaction="{{ route('preencherPlano', 4) }}">Anterior
-                    <i class="material-icons left">arrow_back</i>
+                <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action" onclick="submitFormPlano(4)">Anterior
+                    <i class="material-icons right">arrow_back</i>
                 </button>
             </div>
             <div class="col s6 right-align">
-                <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                        form="formExtensao" formaction="{{ route('preencherPlano', 6) }}">Próxima
+                <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action" onclick="submitFormPlano(6)">Próxima
                     <i class="material-icons right">arrow_forward</i>
                 </button>
             </div>
         </div>
     </footer>
-
-
-
-    <script type="application/javascript">
-        $(document).ready(function(){
-            $('.modal').modal();
-        });
-
-        // Alterando aba ativa no layout de preenchimento e setando funções onClick com os links corretos de cada aba.
-        $("#opExtensao").addClass("active");
-
-        $("#opIdentificacao a").on("click", function () {
-            $("#formExtensao").attr('action', '{{ route('preencherPlano', 1) }}').submit();
-        });
-
-        $("#opAulas a").on("click", function () {
-            $("#formExtensao").attr('action', '{{ route('preencherPlano', 2) }}').submit();
-        });
-
-        $("#opEnsino a").on("click", function () {
-            $("#formExtensao").attr('action', '{{ route('preencherPlano', 3) }}').submit();
-        });
-
-        $("#opPesquisa a").on("click", function () {
-            $("#formExtensao").attr('action', '{{ route('preencherPlano', 4) }}').submit();
-        });
-
-        $("#opExtensao a").on("click", function () {
-            $("#formExtensao").attr('action', '{{ route('preencherPlano', 5) }}').submit();
-        });
-
-        $("#opAdministrativas a").on("click", function () {
-            $("#formExtensao").attr('action', '{{ route('preencherPlano', 6) }}').submit();
-        });
-    </script>
-
 @endsection

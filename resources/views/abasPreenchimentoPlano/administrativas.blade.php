@@ -29,9 +29,9 @@
 
 
     <div class="row" style="margin-top: 2%;">
-        <form class="col s12" id="formAdministrativas" method="post">
+        <form class="col s12" id="formPlano" method="post">
             @csrf
-
+            <input type="hidden" name="aba" value="6">
             <div class="input-field col xl6 l6 m6 s12">
                 <input type="text" id="activity" name="activity">
                 <label for="activity">Nome da atividade</label>
@@ -167,64 +167,19 @@
                 </a>
             </div>
         </div>
-
-
     </div>
-
-
-
     <footer class="page-footer grey lighten-3 grey-text">
         <div class="row">
             <div class="col s6 left-align">
-                <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                        form="formAdministrativas" formaction="{{ route('preencherPlano', 5) }}">Anterior
-                    <i class="material-icons left">arrow_back</i>
+                <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action" onclick="submitFormPlano(5)">Anterior
+                    <i class="material-icons right">arrow_back</i>
                 </button>
             </div>
             <div class="col s6 right-align">
-                <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action"
-                        form="formAdministrativas" formaction="{{ route('salvarPlano') }}">Concluir e Enviar
+                <button class="btn waves-effect waves-light amber darken-3" type="submit" name="action" onclick="submitFormPlano(6)">Concluir e Enviar
                     <i class="material-icons right">save</i>
                 </button>
             </div>
         </div>
     </footer>
-
-
-
-    <script type="application/javascript">
-        $(document).ready(function(){
-            $('.modal').modal();
-            $(".ordinance").mask('#9/9999', {reverse: true});
-        });
-
-
-        // Alterando aba ativa no layout de preenchimento e setando funções onClick com os links corretos de cada aba.
-        $("#opAdministrativas").addClass("active");
-
-        $("#opIdentificacao a").on("click", function () {
-            $("#formAdministrativas").attr('action', '{{ route('preencherPlano', 1) }}').submit();
-        });
-
-        $("#opAulas a").on("click", function () {
-            $("#formAdministrativas").attr('action', '{{ route('preencherPlano', 2) }}').submit();
-        });
-
-        $("#opEnsino a").on("click", function () {
-            $("#formAdministrativas").attr('action', '{{ route('preencherPlano', 3) }}').submit();
-        });
-
-        $("#opPesquisa a").on("click", function () {
-            $("#formAdministrativas").attr('action', '{{ route('preencherPlano', 4) }}').submit();
-        });
-
-        $("#opExtensao a").on("click", function () {
-            $("#formAdministrativas").attr('action', '{{ route('preencherPlano', 5) }}').submit();
-        });
-
-        $("#opAdministrativas a").on("click", function () {
-            $("#formAdministrativas").attr('action', '{{ route('preencherPlano', 6) }}').submit();
-        });
-    </script>
-
 @endsection

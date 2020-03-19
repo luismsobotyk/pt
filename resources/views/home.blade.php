@@ -15,7 +15,8 @@
             @if(Auth::user()->registerPlan &&
                 $hoje->gte($PeriodoAtual->work_plan_opening_date)  &&
                 $hoje->lte($PeriodoAtual->work_plan_closing_date)  &&
-                !$WorkPlanAtual)
+                !$WorkPlanAtual ||
+                !$WorkPlanAtual->approval_date)
                 <div class="col xl3 l6 m6 s12">
                     <div class="card">
                         <div class="card-content">
